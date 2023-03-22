@@ -1,0 +1,13 @@
+@tailwind components;
+
+@layer components {
+    .header {
+        & > div {
+            @apply flex justify-between items-center py-2 text-white;
+        }
+
+        button {
+            @apply w-[120px] flex justify-between;
+        }
+    }
+}
