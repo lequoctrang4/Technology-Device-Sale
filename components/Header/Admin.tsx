@@ -1,8 +1,8 @@
 import React from 'react'
-import style from '../styles/header.module.scss'
-import {Settings, Bell} from 'react-feather'
+import style from '@/styles/header.module.scss'
+import { Settings, Bell } from 'react-feather'
 
-const Header = () => {
+const HeaderAdmin = () => {
     return (
         <nav className={`bg-primary ${style.header}`}>
             <div className='main'>
@@ -13,7 +13,7 @@ const Header = () => {
                         <Bell />
                     </button>
                     <button>
-                        Cài đặt 
+                        Cài đặt
                         <Settings />
                     </button>
                 </div>
@@ -22,4 +22,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default HeaderAdmin;

@@ -1,0 +1,73 @@
+@tailwind components;
+
+@layer components {
+    .product {
+        @apply p-2 shadow-md rounded-md;
+    }
+
+    .form {
+        @apply flex gap-4 items-center border border-neutral-300 rounded px-2;
+
+        input {
+            @apply grow;
+        }
+    }
+
+    .page_btn {
+        @apply py-1 px-2 border border-neutral-600;
+
+        &__active {
+            @apply bg-neutral-600 text-white py-1 px-2 border border-neutral-600;
+        }
+    }
+
+}
+
+.dropdown {
+    position: relative;
+
+    * {
+        background-color: lightgray;
+        box-shadow: 0px 0px 1px 0px silver;
+    }
+
+    &>ul {
+        position: absolute;
+        visibility: hidden;
+        width: 100%;
+    }
+
+    &:hover {
+        &>ul {
+            visibility: visible;
+        }
+    }
+
+    li,
+    p {
+        padding: 0.5rem;
+    }
+
+    li:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.dropdown_sub {
+    position: relative;
+
+    &>ul {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        visibility: hidden;
+        min-width: 120px;
+    }
+
+    &:hover {
+        ul {
+            visibility: visible;
+        }
+    }
+}

@@ -35,6 +35,9 @@
     }
 }
 
+textarea:focus, input:focus{
+    outline: none !important;
+}
 
 .bg-primary {
     background-color: var(--primary);
