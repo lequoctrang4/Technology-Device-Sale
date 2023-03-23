@@ -2,7 +2,7 @@
 
 @layer components {
     .product {
-        @apply p-2 shadow-md rounded-md;
+        @apply p-2 shadow-md rounded-md col-auto;
     }
 
     .form {
@@ -17,7 +17,8 @@
         @apply py-1 px-2 border border-neutral-600;
 
         &__active {
-            @apply bg-neutral-600 text-white py-1 px-2 border border-neutral-600;
+            @apply text-white py-1 px-2 border border-neutral-600;
+            background-color: var(--primary);
         }
     }
 

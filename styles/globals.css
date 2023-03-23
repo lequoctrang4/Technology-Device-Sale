@@ -11,7 +11,7 @@
 
 @layer base {
     body {
-        @apply font-inter min-h-screen;
+        @apply font-inter;
     }
 
     h1 {
@@ -35,8 +35,40 @@
     }
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline: none !important;
+}
+
+#__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#__next > div {
+    flex-grow: 1;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #cacaca #fff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #cacaca;
+    border: 1px solid #fff;
 }
 
 .bg-primary {

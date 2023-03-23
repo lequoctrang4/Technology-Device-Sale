@@ -1,23 +1,48 @@
 import React from 'react'
-import { Home } from 'react-feather'
+import { Smartphone, UserCheck, Users, List } from 'react-feather'
+import style from '@/styles/header.module.scss'
 
-const Sidebar = () => {
+const Sidebar = ({ callback }: { callback: Function }) => {
     const categories = [
         {
-            name: 'Trang chủ',
-            icon: <Home />
+            name: 'Quản lý sản phẩm',
+            icon: <Smartphone />,
+            status: false
+        },
+        {
+            name: 'Quản lý đơn hàng',
+            icon: <List />,
+            status: false
+        },
+        {
+            name: 'Quản lý người dùng',
+            icon: <Users />,
+            status: false
+
+        },
+        {
+            name: 'Quản lý nhân viên',
+            icon: <UserCheck />,
+            status: false
         }
     ]
     return (
-        <div className='py-8 px-4 col-span-1 bg-red-100'>
-            <h3>Hello Admin</h3>
-            <ul>
-                {categories.map(cate =>
-                    <ul>{cate.name} {cate.icon}</ul>
+        <div className={style.sidebar}>
+            <h3 className='text-center'>Hello Admin</h3>
+            <ul className='mt-4'>
+                {categories.map((cate, i: number) =>
+                    <li
+                        className='flex py-2 hover:cursor-pointer hover:underline'
+                        key={cate.name}
+                        onClick={() => callback(i)}
+                    >
+                        {cate.icon}
+                        <span className='ml-4'>{cate.name}</span>
+                    </li>
                 )}
             </ul>
         </div>
     )
 }
 
-export default Sidebar
+export default React.memo(Sidebar)

@@ -5,7 +5,7 @@ import { Settings, Bell } from 'react-feather'
 const HeaderAdmin = () => {
     return (
         <nav className={`bg-primary ${style.header}`}>
-            <div className='main'>
+            <div className='px-6'>
                 <h1>Mewfone</h1>
                 <div className='flex'>
                     <button className='mr-6'>
