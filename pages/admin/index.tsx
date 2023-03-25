@@ -3,6 +3,7 @@ import Sidebar from '@/components/Sidebar'
 import Product from './Product'
 import CustomerList from './Customer'
 import Employee from './Employee'
+import Orders from './Order'
 
 import React, { useState } from 'react'
 
@@ -16,6 +17,7 @@ const AdminSite = () => {
                 { option === 0 && <Product /> }
                 { option === 2 && <CustomerList />}
                 { option === 3 && <Employee /> }
+                { option === 1 && <Orders /> }
             </div>
         </>
     )
