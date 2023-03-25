@@ -17,6 +17,7 @@ function CustomerList() {
                             <th scope="col" className="border px-6 py-3">Username</th>
                             <th scope="col" className="border px-6 py-3">Họ và tên</th>
                             <th scope="col" className="border px-6 py-3">Số điện thoại</th>
+                            <th scope="col" className="border px-6 py-3">Email</th>
                             <th scope="col" className="border px-6 py-3 text-center">Hoạt động</th>
                         </tr>
                     </thead>
@@ -25,6 +26,7 @@ function CustomerList() {
                             <td className="border px-6 py-3">phanhaiha14</td>
                             <td className="border px-6 py-3">Phan Hải Hà</td>
                             <td className="border px-6 py-3">0339337907</td>
+                            <td className="border px-6 py-3">ha.phan@gmail.com</td>
                             <td className="border px-6 py-3 flex justify-around gap-4">
                                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-4">
                                     Đơn hàng
