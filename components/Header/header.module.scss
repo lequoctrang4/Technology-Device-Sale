@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+    .navigation {
+        background-color: var(--primary);
+        color: white;
+
+        & > div {
+            @apply px-6 py-2 flex justify-between;
+        }
+
+        button {
+            @apply gap-2 flex items-center w-[120px];
+        }
+    }
+}

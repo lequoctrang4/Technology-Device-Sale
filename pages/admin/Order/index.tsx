@@ -39,12 +39,12 @@ const Orders = () => {
             <div>
                 {
                     users.map((user: any, i: number) => {
-                        return (<div className='mb-4 bg-secondary p-3 rounded'>
+                        return (<div className='mb-4 bg-secondary p-3 rounded' key={i}>
                             <div className='flex justify-between'>
                                 <div>
                                     <h4>Đơn hàng: #00000{i}</h4>
                                     <p>
-                                        Trạng thái:{' '} 
+                                        Trạng thái:{' '}
                                         <span className='italic'>Đang chờ</span>
                                     </p>
                                 </div>
