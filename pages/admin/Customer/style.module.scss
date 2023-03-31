@@ -6,7 +6,8 @@
     }
 
     .form {
-        @apply flex gap-4 items-center border border-neutral-300 rounded px-2 py-3;
+        @apply flex gap-4 items-center border border-neutral-300 rounded px-2 py-2
+        ;
 
         input {
             @apply grow;

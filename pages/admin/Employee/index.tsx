@@ -11,9 +11,11 @@ function CustomerList() {
                     <input placeholder='Nhập tên người dùng hoặc số điện thoại' />
                     <button type='submit'> <Search /></button>
                 </form>
-                <button className='bg-primary p-2 text-white rounded col-span-1'>
-                    Thêm nhân viên
-                </button>
+                <div className='col-span-1 flex justify-end'>
+                    <button className='bg-primary p-2 text-white rounded '>
+                        Thêm nhân viên
+                    </button>
+                </div>
             </div>
             <div className='grow'>
                 <table className="w-full text-sm text-left">
@@ -35,10 +37,10 @@ function CustomerList() {
                             <td className="border px-6 py-3">ha.phan@gmail.com</td>
                             <td className="border px-6 py-3">Quản lý</td>
                             <td className="border px-6 py-3 flex justify-around gap-4">
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-4">
+                                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex-4">
                                     Thông tin
                                 </button>
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-4">
+                                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex-4">
                                     Xóa
                                 </button>
                             </td>

@@ -8,7 +8,7 @@ import Orders from './Order'
 import React, { useState } from 'react'
 
 const AdminSite = () => {
-    const [option, setOption] = useState(0);
+    const [option, setOption] = useState(2);
     return (
         <>
             <HeaderAdmin />
