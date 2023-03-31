@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import style from './style.module.scss'
 
-const Pagination = () => {
+const Pagination = ({ callback }: { callback: Function }) => {
     const [activePage, setActivePage] = useState(1);
-    const transfer = (action: string) => {
+    const transfer = (action: string, page?: number) => {
         if (action === 'prev') {
-            setActivePage((prev: number) => prev > 1 ? prev - 1 : 1)
+            callback((prev: number) => prev > 1 ? prev - 1 : 0);
+            setActivePage((prev: number) => prev > 1 ? prev - 1 : 1);
         }
-        else setActivePage(prev => prev + 1);
+        else if (action === 'next') {
+            callback((prev: number) => prev + 1);
+            setActivePage(prev => prev + 1);
+        }
+        else if (page) {
+            callback(page - 1);
+            setActivePage(page);
+        }
     }
 
     return (
@@ -21,7 +29,7 @@ const Pagination = () => {
             {
                 [1, 2, 3].map((page: number) =>
                     <button
-                        onClick={() => setActivePage(page)}
+                        onClick={() => transfer('', page)}
                         key={page}
                         className={activePage !== page ? style.page_btn : style.page_btn__active}
                     >
@@ -39,4 +47,4 @@ const Pagination = () => {
     )
 }
 
-export default Pagination
+export default React.memo(Pagination)
