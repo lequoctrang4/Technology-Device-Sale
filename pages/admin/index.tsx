@@ -1,24 +1,18 @@
 import HeaderAdmin from '@/components/Header/Admin'
 import Sidebar from '@/components/Sidebar'
-import Product from './Product'
-import CustomerList from './Customer'
-import Employee from './Employee'
-import Orders from './Order'
+import Product from './product'
+import CustomerList from './customer'
+import Employee from './employee'
+import Orders from './order'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 const AdminSite = () => {
-    const [option, setOption] = useState(2);
     return (
         <>
-            <HeaderAdmin />
-            <div className='grid grid-cols-5'>
-                <Sidebar callback={setOption} />
-                { option === 0 && <Product /> }
-                { option === 2 && <CustomerList />}
-                { option === 3 && <Employee /> }
-                { option === 1 && <Orders /> }
-            </div>
+            <Product />
+            <CustomerList />
+            <Employee />
         </>
     )
 }

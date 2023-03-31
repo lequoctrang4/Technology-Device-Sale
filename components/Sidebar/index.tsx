@@ -1,29 +1,35 @@
 import React from 'react'
 import { Smartphone, UserCheck, Users, List } from 'react-feather'
 import style from '@/styles/header.module.scss'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-const Sidebar = ({ callback }: { callback: Function }) => {
+const Sidebar = () => {
+    const router = useRouter();
     const categories = [
         {
             name: 'Quản lý sản phẩm',
             icon: <Smartphone />,
-            status: false
+            status: false,
+            url: 'product'
         },
         {
             name: 'Quản lý đơn hàng',
             icon: <List />,
-            status: false
+            status: false,
+            url: 'order'
         },
         {
             name: 'Quản lý người dùng',
             icon: <Users />,
-            status: false
-
+            status: false,
+            url: 'user'
         },
         {
             name: 'Quản lý nhân viên',
             icon: <UserCheck />,
-            status: false
+            status: false,
+            url: 'staff'
         }
     ]
     return (
@@ -34,10 +40,9 @@ const Sidebar = ({ callback }: { callback: Function }) => {
                     <li
                         className='flex py-2 hover:cursor-pointer hover:underline'
                         key={cate.name}
-                        onClick={() => callback(i)}
                     >
                         {cate.icon}
-                        <span className='ml-4'>{cate.name}</span>
+                        <Link className='ml-4' href={`/admin/${cate.url}`}>{cate.name}</Link>
                     </li>
                 )}
             </ul>
