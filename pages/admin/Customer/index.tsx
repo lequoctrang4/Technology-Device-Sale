@@ -2,17 +2,22 @@ import Style from './style.module.scss'
 import { Edit, Search } from 'react-feather'
 import React, { useState } from 'react'
 import WarningModal from '@/components/WarningModal';
+import { useRouter } from 'next/router'
 
 function CustomerList() {
     const [activePage, setactivePage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [activeListpage, setActiveListpage] = useState(true);
-    const [activeAddpage, setActiveAddpage] = useState(false);
-    const [activeInfopage, setActiveInfopage] = useState(false);
+    // const [activeAddpage, setActiveAddpage] = useState(false);
+    // const [activeInfopage, setActiveInfopage] = useState(false);
+
+    const router = useRouter();
+    console.log(router.query);
+    const username = router.query.username;
 
     return (
         <div className='col-span-4 p-8 flex flex-col'>
-            <nav className="flex mb-5" aria-label="Breadcrumb">
+            {/* <nav className="flex mb-5" aria-label="Breadcrumb">
                 <ol className="inline-flex items-center space-x-1 md:space-x-3">
                     <li className="inline-flex items-center">
                         <a href="#" className="inline-flex items-center text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -33,8 +38,8 @@ function CustomerList() {
                         </div>
                     </li>}
                 </ol>
-            </nav>
-            {activeListpage && <>
+            </nav> */}
+            {<>
                 <form className={`mb-4 ${Style.form}`}>
                     <input placeholder='Nhập tên người dùng hoặc số điện thoại' />
                     <button type='submit'> <Search /></button>
@@ -57,10 +62,16 @@ function CustomerList() {
                                 <td className="border px-6 py-3">0339337907</td>
                                 <td className="border px-6 py-3">ha.phan@gmail.com</td>
                                 <td className="border px-6 py-3 flex justify-around gap-4">
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-4">
+                                    <button
+                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-4"
+                                        onClick={() => router.push(`/admin/customer/phanhaiha14/order_history`)}
+                                    >
                                         Đơn hàng
                                     </button>
-                                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex-4">
+                                    <button
+                                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex-4"
+                                        onClick={() => router.push(`/admin/customer/phanhaiha14`)}
+                                    >
                                         Thông tin
                                     </button>
                                     <button

@@ -13,6 +13,7 @@ const AdminSite = () => {
             <Product />
             <CustomerList />
             <Employee />
+            <Orders />
         </>
     )
 }

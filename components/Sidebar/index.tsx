@@ -20,16 +20,16 @@ const Sidebar = () => {
             url: 'order'
         },
         {
-            name: 'Quản lý người dùng',
+            name: 'Quản lý khách hàng',
             icon: <Users />,
             status: false,
-            url: 'user'
+            url: 'customer'
         },
         {
             name: 'Quản lý nhân viên',
             icon: <UserCheck />,
             status: false,
-            url: 'staff'
+            url: 'employee'
         }
     ]
     return (

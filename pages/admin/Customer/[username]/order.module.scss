@@ -1,0 +1,47 @@
+@tailwind components;
+
+@layer components {
+    ul._states {
+        @apply flex overflow-hidden border border-gray-300 rounded;
+
+        li {
+            @apply text-center p-1 cursor-pointer hover:underline min-w-[120px];
+            background-color: var(--secondary);
+
+            &:nth-child(2) {
+                @apply border-x border-gray-300;
+            }
+        }
+
+        li.active {
+            @apply text-white text-center py-1 px-2 cursor-pointer underline min-w-[120px];
+            background-color: var(--primary);
+        }
+    }
+
+    .form {
+        @apply border border-gray-300 rounded px-2 flex gap-4 w-2/5;
+
+        input {
+            @apply grow;
+        }
+    }
+}
+
+.list {
+    margin-top: 0.5rem;
+
+    td, th {
+        text-align: left;
+        padding: 0 .5rem;
+    }
+}
+
+.detail {
+    border-collapse: collapse;
+
+    td, th {
+        border: 1px solid silver;
+        padding: 0 .5rem;
+    }
+}
