@@ -33,6 +33,14 @@
     .main {
         @apply m-auto w-full md:w-[720px] lg:w-[1280px];
     }
+
+    .btn-success {
+        @apply bg-green-500 text-white py-1 px-3 rounded;
+    }
+
+    .btn-danger {
+        @apply bg-red-500 text-white py-1 px-3 rounded;
+    }
 }
 
 textarea:focus,

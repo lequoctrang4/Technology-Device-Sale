@@ -1,32 +1,25 @@
-import Link from "next/link";
-// ...omitted for brevity
-// components/breadcrumbs/Breadcrumbs.ts
-import { BreadcrumbsProps } from "@/model/Breadcrumb";
+import eLink from '@/model/eLink'
+import Link from 'next/link'
+import React from 'react'
+import { ChevronRight } from 'react-feather'
 
-const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
+const Breadcrumb = ({ links }: { links: Array<eLink> }) => {
     return (
-        <div className="flex gap-2 items-start">
-            {items.map((crumb, i) => {
-                const isLastItem = i === items.length - 1;
-                if (!isLastItem) {
-                    return (
-                        <>
-                            <Link
-                                href={crumb.path}
-                                key={i}
-                                className="text-indigo-500 hover:text-indigo-400 hover:underline"
-                            >
-                                {crumb.label}
-                            </Link>
-                            {/* separator */}
-                            <span> / </span>
-                        </>
-                    );
-                } else {
-                    return crumb.label;
+        <h3 className="font-normal flex items-center">
+            {links.map((link: eLink) => {
+                if (link.path) {
+                    return <>
+                        <Link href={link.path} className="hover:underline">
+                            {link.name}
+                        </Link>
+                        <ChevronRight />
+                    </>
                 }
-            })}
-        </div>
-    );
-};
-export default Breadcrumbs;
+                return <span>{link.name}</span>
+            }
+            )}
+        </h3>
+    )
+}
+
+export default Breadcrumb

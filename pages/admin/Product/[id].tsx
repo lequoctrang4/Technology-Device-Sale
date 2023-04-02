@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { ChevronRight } from 'react-feather';
 import React, { useState } from 'react';
 import style from './style.module.scss';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const Detail = () => {
     const router = useRouter();
@@ -10,15 +11,15 @@ const Detail = () => {
     const id = router.query.id;
     const content =
         'Mollit aliquip qui nisi minim aliquip ut excepteur incididunt cupidatat quis ullamco nisi eiusmod.Aute ut reprehenderit deserunt enim sunt elit ad aute mollit est.Excepteur do fugiat Lorem veniam nostrud velit esse ut dolor sunt esse culpa consectetur.';
+
+    const bread = [
+        { name: 'Quản lý sản phẩm', path: '/admin/product' },
+        { name: 'Samsung Galaxy A04' },
+    ];
+
     return (
         <div className="col-span-4 p-8">
-            <h3 className="font-normal flex items-center">
-                <Link href={'/admin/product'} className="hover:underline">
-                    Quản lý sản phẩm
-                </Link>
-                <ChevronRight />
-                Samsung Galaxy A04
-            </h3>
+            <Breadcrumb links={bread} />
             <div className="flex justify-between my-4">
                 <h3>Hiệu chỉnh</h3>
                 <button
@@ -80,7 +81,7 @@ const Detail = () => {
                 <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <label>ID</label>
-                        <input type="text" />
+                        <input type="text" value={`#${id}`} />
                     </div>
                     <div className="col-span-1">
                         <label>Giá hiện tại</label>
@@ -91,7 +92,9 @@ const Detail = () => {
                     <div className="grid grid-cols-2 gap-4">
                         <div className="col-span-1 grid grid-cols-2 gap-2">
                             <select className="col">
-                                <option value="" hidden selected>Chọn loại</option>
+                                <option value="" hidden selected>
+                                    Chọn loại
+                                </option>
                                 <option value="num">Số</option>
                                 <option value="text">Chữ</option>
                             </select>
@@ -102,13 +105,24 @@ const Detail = () => {
                             />
                         </div>
                         <div className="col-span-1">
-                            <input type="text" placeholder='Value'/>
+                            <input type="text" placeholder="Value" />
                         </div>
                     </div>
                 )}
                 <div>
                     <label>Mô tả</label>
                     <textarea value={content} />
+                </div>
+                <div className="flex justify-end gap-8">
+                    <Link
+                        href={'/admin/product'}
+                        className="btn-danger hover:underline"
+                    >
+                        Hủy thay đổi
+                    </Link>
+                    <button className="btn-success hover:underline">
+                        Lưu thay đổi
+                    </button>
                 </div>
             </form>
         </div>
