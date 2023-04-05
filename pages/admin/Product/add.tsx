@@ -1,26 +1,20 @@
+import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import style from './style.module.scss';
-import Breadcrumb from '@/components/Breadcrumb';
 
-const Detail = () => {
-    const router = useRouter();
-    const [field, setField] = useState<Boolean>(false);
-    const id = router.query.id;
-    const content =
-        'Mollit aliquip qui nisi minim aliquip ut excepteur incididunt cupidatat quis ullamco nisi eiusmod.Aute ut reprehenderit deserunt enim sunt elit ad aute mollit est.Excepteur do fugiat Lorem veniam nostrud velit esse ut dolor sunt esse culpa consectetur.';
-
+const Add = () => {
     const bread = [
         { name: 'Quản lý sản phẩm', path: '/admin/product' },
-        { name: 'Samsung Galaxy A04' },
+        { name: 'Thêm sản phẩm mới' },
     ];
+    const [field, setField] = useState<Boolean>(false);
 
     return (
-        <div className="col-span-4 p-8">
+        <div className='flex flex-col col-span-4 p-8'>
             <Breadcrumb links={bread} />
             <div className="flex justify-between my-4">
-                <h3>Hiệu chỉnh</h3>
+                <h3>Thêm sản phẩm mới</h3>
                 <button
                     onClick={() => setField((prev) => !prev)}
                     className="bg-primary text-white p-1 rounded"
@@ -110,7 +104,7 @@ const Detail = () => {
                 )}
                 <div>
                     <label>Mô tả</label>
-                    <textarea value={content} />
+                    <textarea />
                 </div>
                 <div className="flex justify-end gap-8">
                     <Link
@@ -125,7 +119,7 @@ const Detail = () => {
                 </div>
             </form>
         </div>
-    );
-};
+    )
+}
 
-export default Detail;
+export default Add

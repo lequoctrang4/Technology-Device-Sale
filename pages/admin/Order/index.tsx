@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Search } from 'react-feather';
+
 import style from './order.module.scss';
+import WarningModal from '@/components/WarningModal'
 import Pagination from '@/components/Pagination';
 
 const Orders = () => {
     const [index, setIndex] = useState<number>(0);
     const [users, setUsers] = useState([]);
     const [amount, setAmount] = useState<number>(0);
-    const states = ['Đã xác nhận', 'Đang giao', 'Đã giao'];
+    const [showModal, setShowModal] = useState<Boolean>(false);
+    const states = ['Đang chờ xác nhận', 'Đã xác nhận', 'Đang giao', 'Đã giao'];
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -57,11 +60,11 @@ const Orders = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <button className="bg-red-500 text-white p-2 rounded mr-4">
-                                            Xác nhận
+                                        <button className="btn-danger mr-4" onClick={()=>setShowModal(true)}>
+                                            Từ chối
                                         </button>
-                                        <button className="bg-green-500 text-white p-2 rounded">
-                                            Hủy bỏ
+                                        <button className="btn-success">
+                                            Xác nhận
                                         </button>
                                     </div>
                                 </div>
@@ -116,6 +119,9 @@ const Orders = () => {
                         );
                     })}
             </div>
+            {showModal && <WarningModal setShowModal={setShowModal}>
+                <p>Bạn có chắc muốn từ chối đơn hàng này?</p>
+            </WarningModal>}
             {/* Pages */}
             <Pagination callback={setAmount} />
         </div>
