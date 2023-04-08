@@ -1,8 +1,10 @@
 import Pagination from '@/components/Pagination'
-import { useRouter } from 'next/router'
-import React, { useState } from 'react'
-import { Edit, Search } from 'react-feather'
 import style from './style.module.scss'
+
+import React, { useState } from 'react'
+import Link from 'next/link';
+import { useRouter } from 'next/router'
+import { Edit, Search } from 'react-feather'
 
 const PlaceholderImage = ({ w, h }: { w: string, h?: string }) =>
     <div style={{ width: w, height: h, backgroundColor: '#ccc' }} />
@@ -45,9 +47,13 @@ const Products = () => {
                     </ul>
                 </div>
 
-                <button className='bg-primary p-2 text-white rounded col-span-1'>
+                <Link
+                    href={'/admin/product/add'} 
+                    className='bg-primary p-2 text-white rounded col-span-1'
+                    
+                >
                     Thêm sản phẩm
-                </button>
+                </Link>
             </div>
 
             {/* All products */}

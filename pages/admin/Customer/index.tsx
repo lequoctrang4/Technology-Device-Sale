@@ -84,7 +84,18 @@ function CustomerList() {
                             </tr>
                         </tbody>
                     </table>
-                    {showModal && <WarningModal setShowModal={setShowModal} />}
+                    {showModal && <WarningModal setShowModal={setShowModal}>
+                        <h3 
+                            className="text-base font-semibold leading-6 text-gray-900" 
+                            id="modal-title">
+                            Xóa phanhaiha14
+                        </h3>
+                        <div className="mt-2">
+                            <p className="text-sm text-gray-500">
+                                Bạn có muốn xóa tài khoản phanhaiha14? Sau khi xóa, dữ liệu không thể khôi phục.
+                            </p>
+                        </div>
+                    </WarningModal>}
                 </div>
                 <div className='flex justify-center justify-self-end'>
                     <button className='rounded-tl rounded-bl border border-gray-900 p-1'>Prev</button>

@@ -5,11 +5,11 @@
         @apply flex overflow-hidden border border-gray-300 rounded;
 
         li {
-            @apply text-center p-1 cursor-pointer hover:underline min-w-[120px];
+            @apply text-center p-1 cursor-pointer border-r border-gray-300 hover:underline min-w-[120px];
             background-color: var(--secondary);
 
-            &:nth-child(2) {
-                @apply border-x border-gray-300;
+            &:last-child {
+                border: none;
             }
         }
 

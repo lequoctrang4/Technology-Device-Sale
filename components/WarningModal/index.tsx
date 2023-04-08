@@ -1,4 +1,6 @@
 const WarningModal = (props : any) => {
+    const {children}: React.Element = props;
+    console.log(children)
     return (
         <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             {/* <!--
@@ -34,10 +36,15 @@ const WarningModal = (props : any) => {
                                     </svg>
                                 </div>
                                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                    <h3 className="text-base font-semibold leading-6 text-gray-900" id="modal-title">Xóa phanhaiha14</h3>
-                                    <div className="mt-2">
+                                    {/*<h3 
+                                        className="text-base font-semibold leading-6 text-gray-900" 
+                                        id="modal-title">
+                                        Xóa phanhaiha14
+                                    </h3>*/}
+                                    {/*<div className="mt-2">
                                         <p className="text-sm text-gray-500">Bạn có muốn xóa tài khoản phanhaiha14? Sau khi xóa, dữ liệu không thể khôi phục.</p>
-                                    </div>
+                                    </div>*/}
+                                    {children}
                                 </div>
                             </div>
                         </div>
