@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ChevronRight } from 'react-feather';
 import React, { useState } from 'react';
 import style from './style.module.scss';
 import Breadcrumb from '@/components/Breadcrumb';
