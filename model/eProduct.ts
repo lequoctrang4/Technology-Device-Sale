@@ -6,4 +6,4 @@ interface eProduct {
     quantity: number
 }
 
-export default eOrder;
+export default eProduct;

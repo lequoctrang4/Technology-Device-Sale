@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Search } from 'react-feather';
 
 import style from './order.module.scss';
-import WarningModal from '@/components/WarningModal'
 import Pagination from '@/components/Pagination';
+import InfoModal from '@/components/Modal/Info';
 
 const Orders = () => {
     const [index, setIndex] = useState<number>(0);
@@ -60,7 +60,7 @@ const Orders = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <button className="btn-danger mr-4" onClick={()=>setShowModal(true)}>
+                                        <button className="btn-danger mr-4" onClick={() => setShowModal(true)}>
                                             Từ chối
                                         </button>
                                         <button className="btn-success">
@@ -119,9 +119,9 @@ const Orders = () => {
                         );
                     })}
             </div>
-            {showModal && <WarningModal setShowModal={setShowModal}>
+            {showModal && <InfoModal exit={setShowModal}>
                 <p>Bạn có chắc muốn từ chối đơn hàng này?</p>
-            </WarningModal>}
+            </InfoModal>}
             {/* Pages */}
             <Pagination callback={setAmount} />
         </div>
