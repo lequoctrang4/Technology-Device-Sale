@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Search } from 'react-feather';
 import style from './order.module.scss';
 import Pagination from '@/components/Pagination';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const OrderHistory = () => {
     const [index, setIndex] = useState<number>(0);
     const [users, setUsers] = useState([]);
     const [amount, setAmount] = useState<number>(0);
     const states = ['Đã xác nhận', 'Đang giao', 'Đã giao'];
+
+    const bread = [
+        { name: 'Quản lý khách hàng', path: '/admin/customer' },
+        { name: `Thông tin khách hàng phanhaiha14`, path: `/admin/customer/phanhaiha14` },
+        { name: `Danh sách đơn hàng` }
+    ];
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -17,7 +24,9 @@ const OrderHistory = () => {
 
     return (
         <div className='p-8 col-span-4'>
-            <h3 className='font-normal'>Đơn hàng của phanhaiha14</h3>
+            <div>
+                <Breadcrumb links={bread}></Breadcrumb>
+            </div>
             <div className='flex justify-between my-4'>
                 <ul className={style._states}>
                     {
