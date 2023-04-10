@@ -1,0 +1,18 @@
+@tailwind components;
+
+@layer components {
+    .login-form {
+        & > div {
+            @apply grid grid-cols-5 mb-4 items-center;
+        }
+
+        label {
+            @apply col-span-1;
+        }
+
+        input {
+            @apply col-span-4 py-1 px-2 border-gray-500 border-b;
+        }
+    }
+}
+

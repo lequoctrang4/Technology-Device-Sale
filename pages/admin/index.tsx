@@ -1,21 +1,9 @@
-import HeaderAdmin from '@/components/Header/Admin'
-import Sidebar from '@/components/Sidebar'
-import Product from './product'
-import CustomerList from './customer'
-import Employee from './employee'
-import Orders from './order'
-
-import React from 'react'
+import { GlobalCtx } from '@/components/GlobalContext'
+import React, { useContext, useEffect } from 'react'
 
 const AdminSite = () => {
-    return (
-        <>
-            <Product />
-            <CustomerList />
-            <Employee />
-            <Orders />
-        </>
-    )
+    // const { user } = useContext(GlobalCtx);
+    return <div>AdminSite</div>
 }
 
 export default AdminSite
