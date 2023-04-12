@@ -10,7 +10,7 @@
         }
 
         button {
-            @apply gap-2 flex justify-center items-center min-w-[150px] bg-red-500 p-2 rounded-md hover:brightness-125;
+            @apply gap-2 flex justify-center items-center bg-red-500 p-2 rounded-md hover:brightness-125;
         }
 
         .search-box {
