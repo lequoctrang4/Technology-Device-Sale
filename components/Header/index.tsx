@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Search, ShoppingCart, Truck, User } from 'react-feather'
 
 import style from './header.module.scss'
-import Login from '../Login';
 import InfoModal from '../Modal/Info';
 import { getCookie } from 'typescript-cookie';
+import Authentication from '../Authentication';
 
 const Header = () => {
     const [keyword, setKeyword] = useState<string>("");
@@ -12,7 +12,7 @@ const Header = () => {
     const [isLogin, setIsLogin] = useState<boolean>(false);
 
     const handleLookUp = (e: React.SyntheticEvent) => {
-        e.preventDefault(); //
+        e.preventDefault();
         console.log(keyword)
     }
 
@@ -26,7 +26,7 @@ const Header = () => {
     return (
         <>
             <nav className={style.navigation}>
-                <div>
+                <div className='main'>
                     <h2>Header</h2>
                     <form className={style['search-box']} onSubmit={handleLookUp}>
                         <input
@@ -52,15 +52,7 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-            {loginModal && (
-                <InfoModal
-                    exit={setLoginModal}
-                    header={<Login.Header />}
-                    footer={<Login.Footer />}
-                >
-                    <Login />
-                </InfoModal>)
-            }
+            {loginModal && <Authentication callback={setLoginModal} />}
         </>
     )
 }

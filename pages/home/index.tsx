@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Outstanding from './outstanding'
 import Carousel from '@/components/Carousel'
+import { signIn } from '../api/userApi'
 
 const HomePage = () => {
 	const [images, setImages] = useState([])
 
 	useEffect(() => {
-		fetch('https://picsum.photos/v2/list?page=2&limit=5')
-			.then(resp => resp.json())
-			.then(data => setImages(data))
+		signIn({ mobile: '0399609015', password: 'Lequoctrang' })
+			.then(res => console.log(res))
 	}, [])
-
-	const handleImg = (link:string) => {
-		const last = link.slice(-4);
-
-		return 
-	}
 
 	return (
 		<div>
@@ -23,7 +17,7 @@ const HomePage = () => {
 				<Carousel>
 					{
 						images.map((img: any) =>
-							<img src={img.download_url} alt={img.id} key={img.id}/>
+							<img src={img.download_url} alt={img.id} key={img.id} />
 						)
 					}
 				</Carousel>
