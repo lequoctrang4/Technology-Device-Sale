@@ -9,6 +9,7 @@ import Header from '@/components/Header'
 import HeaderAdmin from '@/components/Header/Admin'
 import eUser, { defaultUser } from '@/model/eUser'
 import GlobalContext from '@/components/GlobalContext'
+import Footer from '@/components/Footer'
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [user, setUser] = useState<eUser>(defaultUser);
@@ -40,6 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
 						{/* user is customer or not logged in */}
 						<Header />
 						<Component {...pageProps} />
+						<Footer />
 					</>
 				)
 			}
