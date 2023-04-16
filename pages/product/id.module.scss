@@ -12,4 +12,20 @@
             @apply border border-gray-600 p-2;
         }
     }
+
+    .review-table {
+        @apply grow border-l border-gray-300;
+
+        td {
+            @apply px-2 py-1;
+
+            &:last-child {
+                @apply w-full;
+            }
+        }
+    }
+
+    .comment {
+        @apply pt-4 pb-2 border-gray-300 border-b;
+    }
 }

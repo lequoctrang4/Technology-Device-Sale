@@ -3,17 +3,28 @@ import {
     CartPlus,
     Icon7Circle,
     ShieldCheck,
+    StarFill,
 } from 'react-bootstrap-icons';
 import style from './id.module.scss';
-import Outstanding from '../home/outstanding';
-import DefaultCart from '@/components/ItemCard/default';
+import CompactCart from '@/components/ItemCard/compact';
+import FiveStar from '@/components/Utilities/FiveStar';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const DetailProduct = () => {
+    const bread = [
+        { name: 'Điện thoại', path: '/product/mobile' },
+        { name: 'iPhone 13 128GB' },
+    ];
     return (
         <div className="main">
             <div className="py-8">
-                <h1>iPhone 13 128GB | Chính hãng VN/A</h1>
-                <div className="grid grid-cols-3 gap-4 mt-6">
+                <Breadcrumb links={bread} />
+                <h1 className='mt-4'>
+                    iPhone 13 128GB
+                    <span className="font-light">|</span>
+                    Chính hãng VN/A
+                </h1>
+                <div className="md:grid grid-cols-3 gap-4 mt-6">
                     <div className="col-span-2">
                         <div className="w-full h-[300px] bg-slate-300 rounded-md mb-8"></div>
                         <div className="grid grid-cols-2 gap-2 text-center">
@@ -43,7 +54,7 @@ const DetailProduct = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="col-auto grid grid-rows-6 gap-4">
+                    <div className="col-auto grid grid-rows-6 gap-4 pt-6 md:pt-0">
                         <div className="row-span-3">
                             <h3>24.000.000 vnd</h3>
                             <div className="flex flex-wrap gap-3 mt-4">
@@ -91,14 +102,14 @@ const DetailProduct = () => {
                         {Array(3)
                             .fill(0)
                             .map((_, i) => {
-                                return <DefaultCart key={i} />;
+                                return <CompactCart key={i} />;
                             })}
                     </div>
                 </div>
-                <div className="grid grid-cols-3 gap-4 my-8">
+                <div className="md:grid grid-cols-3 gap-4 my-8">
                     <div className="col-span-2">
                         <h4>Mô tả sản phẩm</h4>
-                        <div className='text-justify pr-4 mt-4'>
+                        <div className="text-justify pr-4 mt-4">
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Assumenda impedit saepe ut
@@ -129,7 +140,7 @@ const DetailProduct = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="pt-4 col-auto md:pt-0">
                         <h4 className="text-center">Cấu hình chi tiết</h4>
                         <table className={style['config-table']}>
                             <tbody>
@@ -162,6 +173,116 @@ const DetailProduct = () => {
                             </tbody>
                         </table>
                         <button className="btn-info w-full">Xem thêm</button>
+                    </div>
+                </div>
+                <div className="md:grid grid-cols-3 my-8">
+                    <div className="col-span-2">
+                        <h4>Nhận xét và đánh giá</h4>
+                        <div className="flex">
+                            <div className="w-1/3 text-center my-auto">
+                                <b>5.0/5</b>
+                                <FiveStar n={5} />
+                                <p>20 đánh giá và nhận xét</p>
+                            </div>
+                            <table className={style['review-table']}>
+                                <tbody>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <StarFill color="gold" />
+                                        </td>
+                                        <td>
+                                            <p className="bg-red-400 w-full h-[12px]"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <StarFill color="gold" />
+                                        </td>
+                                        <td>
+                                            <p className="bg-gray-300 w-full h-[12px]"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <StarFill color="gold" />
+                                        </td>
+                                        <td>
+                                            <p className="bg-gray-300 w-full h-[12px]"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <StarFill color="gold" />
+                                        </td>
+                                        <td>
+                                            <p className="bg-gray-300 w-full h-[12px]"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <StarFill color="gold" />
+                                        </td>
+                                        <td>
+                                            <p className="bg-gray-300 w-full h-[12px]"></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="my-2">
+                            <h5>Viết nhận xét về sản phẩm</h5>
+                            <form className="flex justify-between gap-1">
+                                <input
+                                    className="searchbar grow"
+                                    type="text"
+                                    placeholder="Để lại bình luận của bạn..."
+                                />
+                                <button className="btn-danger">Gửi</button>
+                            </form>
+                            <div>
+                                {Array(3)
+                                    .fill(9)
+                                    .map((_, i) => (
+                                        <div className={style['comment']}>
+                                            <div className="flex justify-between items-center">
+                                                <div className="flex justify-between items-center gap-4">
+                                                    <img
+                                                        alt="avatar"
+                                                        src="https://qph.cf2.quoracdn.net/main-qimg-2cd09921c5cc731d5bfd3444909a7bf3-lq"
+                                                        width={48}
+                                                    />
+                                                    <span className="font-semibold">
+                                                        Uzumaki Naruto
+                                                    </span>
+                                                    <FiveStar n={5} />
+                                                </div>
+                                                <span className="text-sm">
+                                                    03/12/2022 09:12AM
+                                                </span>
+                                            </div>
+                                            <p className="p-2">
+                                                Et voluptate proident sint id
+                                                mollit aliquip amet nulla irure
+                                                aliquip. Occaecat labore nulla
+                                                magna enim veniam commodo velit
+                                                ea veniam est cillum enim ex.
+                                                Consequat eiusmod sit culpa esse
+                                                sunt in ea. Elit eu sint
+                                                consectetur aliqua pariatur
+                                                velit Lorem esse.
+                                            </p>
+                                        </div>
+                                    ))}
+                            </div>
+                            <div className="flex justify-center pt-4">
+                                <button className="btn-info">Xem thêm</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

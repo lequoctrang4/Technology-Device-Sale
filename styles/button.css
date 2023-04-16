@@ -1,0 +1,43 @@
+@tailwind components;
+
+@layer components {
+    .btn-success {
+        @apply bg-green-500 text-white py-1 px-3 rounded;
+    }
+
+    .btn-danger {
+        @apply bg-red-500 text-white py-1 px-3 rounded;
+    }
+
+    .btn-info {
+        @apply bg-sky-400 text-white py-1 px-3 rounded;
+    }
+
+    .btn-dark {
+        @apply bg-neutral-600 text-white py-1 px-3 rounded;
+    }
+
+    .btn-warning {
+        @apply bg-amber-400 text-red-600 py-1 px-3 rounded;
+    }
+
+    .btn-warning-outline {
+        @apply py-1 px-3 rounded border border-amber-500 text-amber-600;
+    }
+
+    .btn-success-outline {
+        @apply py-1 px-3 rounded border border-green-500 text-green-600;
+    }
+
+    .btn-danger-outline {
+        @apply py-1 px-3 rounded border border-red-500 text-red-600;
+    }
+
+    .btn-info-outline {
+        @apply py-1 px-3 rounded border border-blue-400 text-blue-400;
+    }
+
+    .btn-dark-outline {
+        @apply py-1 px-3 rounded border border-gray-600 text-gray-700;
+    }
+}

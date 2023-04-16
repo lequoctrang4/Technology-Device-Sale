@@ -5,6 +5,7 @@ import style from './header.module.scss'
 import InfoModal from '../Modal/Info';
 import { getCookie } from 'typescript-cookie';
 import Authentication from '../Authentication';
+import Link from 'next/link';
 
 const Header = () => {
     const [keyword, setKeyword] = useState<string>("");
@@ -27,7 +28,9 @@ const Header = () => {
         <>
             <nav className={style.navigation}>
                 <div className='main'>
-                    <h2>Header</h2>
+                    <Link href='/'>
+                        <h2>Header</h2>
+                    </Link>
                     <form className={style['search-box']} onSubmit={handleLookUp}>
                         <input
                             type='text'
