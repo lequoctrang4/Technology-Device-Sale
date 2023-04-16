@@ -1,0 +1,11 @@
+@tailwind components;
+
+@layer components {
+    #carousel {
+        @apply overflow-hidden relative;
+    }
+
+    .button {
+        @apply rounded-full shadow bg-white/50 text-gray-200 text-center top-[45%] hover:bg-white/80 absolute z-[5];
+    }
+}
