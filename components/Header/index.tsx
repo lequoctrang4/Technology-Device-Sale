@@ -5,6 +5,8 @@ import style from './header.module.scss'
 import InfoModal from '../Modal/Info';
 import { getCookie } from 'typescript-cookie';
 import Authentication from '../Authentication';
+import logo from '../../asset/image/mewfone_1.png'
+import Image from 'next/image';
 
 const Header = () => {
     const [keyword, setKeyword] = useState<string>("");
@@ -27,7 +29,7 @@ const Header = () => {
         <>
             <nav className={style.navigation}>
                 <div className='main'>
-                    <h2>Header</h2>
+                    <Image src={logo} alt="logo" width={100} />
                     <form className={style['search-box']} onSubmit={handleLookUp}>
                         <input
                             type='text'
