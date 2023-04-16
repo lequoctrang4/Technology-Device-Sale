@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import { X } from 'react-feather'
+import { XCircle } from 'react-bootstrap-icons'
 
 interface modalProps {
     exit: Function,
@@ -24,7 +24,7 @@ const InfoModal = (props: modalProps) => {
                         <div className='py-2 px-4 border-gray-100 border-b flex justify-between'>
                             <div>{props.header}</div>
                             <button onClick={() => props.exit(false)}>
-                                <X />
+                                <XCircle />
                             </button>
                         </div>
                         <div className="bg-white px-4 pt-2 pb-4 sm:p-6 sm:pb-4">

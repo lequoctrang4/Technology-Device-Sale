@@ -1,5 +1,5 @@
 import Style from './style.module.scss'
-import { Edit, Search } from 'react-feather'
+import { PencilSquare, Search } from 'react-bootstrap-icons'
 import React, { useState } from 'react'
 import WarningModal from '@/components/WarningModal';
 import { useRouter } from 'next/router'

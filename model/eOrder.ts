@@ -1,3 +1,5 @@
+import eProduct from "./eProduct";
+
 interface eOrder {
     id: string,
     status: string,

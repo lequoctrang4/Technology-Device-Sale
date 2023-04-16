@@ -14,16 +14,22 @@ const Footer = () => {
                     <li><Link href=''>Câu hỏi thường gặp</Link></li>
                     <li>
                         Liên hệ
-                        <ul>
-                            <li><Link href=''>mewfone@hcmut.edu.vn</Link></li>
-                            <li><Link href=''>1800 1008</Link></li>
+                        <ul className='list-disc'>
+                            <li>
+                                Email:{' '}
+                                <Link href='/'>mewfone@hcmut.edu.vn</Link>
+                            </li>
+                            <li>
+                                Điện thoại:{' '}
+                                <Link href='/'>1800 1008</Link>
+                            </li>
                         </ul>
                     </li>
                 </ul>
-                <ul className='md:col-span-2'>
+                <ul className='md:col-span-2 list-disc'>
                     Về chúng tôi
                     <li>Phan Hải Hà - 2011134</li>
-                    <li>Nguyễn Đình Minh Đạt	- 2012927</li>
+                    <li>Nguyễn Đình Minh Đạt - 2012927</li>
                     <li>Lê Quốc Trạng - 2014812</li>
                     <li>Trần Như Bửu - 1810840</li>
                 </ul>

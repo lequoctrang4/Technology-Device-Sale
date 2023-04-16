@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Search } from 'react-feather';
+import { Search } from 'react-bootstrap-icons';
 
 import style from './order.module.scss';
 import Pagination from '@/components/Pagination';

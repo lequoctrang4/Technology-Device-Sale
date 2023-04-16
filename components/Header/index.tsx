@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Search, ShoppingCart, Truck, User } from 'react-feather'
+import { Search, Cart3, Truck, PersonCircle } from 'react-bootstrap-icons'
 
 import style from './header.module.scss'
 import InfoModal from '../Modal/Info';
@@ -42,12 +42,12 @@ const Header = () => {
                             Tra cứu
                         </button>
                         <button>
-                            <ShoppingCart />
+                            <Cart3 />
                             Giỏ hàng
                         </button>
                         <button onClick={() => setLoginModal(true)}>
-                            <User />
-                            { isLogin ? 'Welcome' : 'Đăng nhập' }
+                            <PersonCircle />
+                            {isLogin ? 'Welcome' : 'Đăng nhập'}
                         </button>
                     </div>
                 </div>

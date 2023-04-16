@@ -1,32 +1,31 @@
 import React from 'react'
-import { Smartphone, UserCheck, Users, List } from 'react-feather'
+import { Telephone, People, Person, ListTask } from 'react-bootstrap-icons'
 import style from '@/styles/header.module.scss'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const Sidebar = () => {
     const categories = [
         {
             name: 'Quản lý sản phẩm',
-            icon: <Smartphone />,
+            icon: <Telephone />,
             status: false,
             url: 'product'
         },
         {
             name: 'Quản lý đơn hàng',
-            icon: <List />,
+            icon: <ListTask />,
             status: false,
             url: 'order'
         },
         {
             name: 'Quản lý khách hàng',
-            icon: <Users />,
+            icon: <Person />,
             status: false,
             url: 'customer'
         },
         {
             name: 'Quản lý nhân viên',
-            icon: <UserCheck />,
+            icon: <People />,
             status: false,
             url: 'employee'
         }

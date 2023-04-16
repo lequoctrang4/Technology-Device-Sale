@@ -3,7 +3,8 @@
 @layer components {
     .navigation {
         background-color: var(--primary);
-        color: white;
+        z-index: 1;
+        @apply w-full text-white;
 
         & > div {
             @apply py-2 flex justify-between;
