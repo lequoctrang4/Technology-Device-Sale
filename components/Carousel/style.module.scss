@@ -6,6 +6,6 @@
     }
 
     .button {
-        @apply rounded-full shadow bg-white/50 text-gray-200 text-center top-[45%] hover:bg-white/80 absolute z-[5];
+        @apply rounded-full p-1 shadow bg-white/50 text-gray-600 text-center top-1/3 hover:bg-white/80 absolute z-[5];
     }
 }

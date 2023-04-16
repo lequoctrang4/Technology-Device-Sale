@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './header.module.scss'
-import { Settings, Bell } from 'react-feather'
+import { Gear, Bell } from 'react-bootstrap-icons'
 import logo from '../../asset/image/mewfone.png'
 import Image from 'next/image'
 
@@ -21,7 +21,7 @@ const HeaderAdmin = () => {
                     </button>
                     <button className='flex justify-center bg-red-500 rounded-lg px-2'>
                         Cài đặt
-                        <Settings />
+                        <Gear />
                     </button>
                 </div>
             </div>

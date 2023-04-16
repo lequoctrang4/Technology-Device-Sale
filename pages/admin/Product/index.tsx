@@ -4,7 +4,7 @@ import style from './style.module.scss'
 import React, { useState } from 'react'
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import { Edit, Search } from 'react-feather'
+import { PencilSquare, Search } from 'react-bootstrap-icons'
 
 const PlaceholderImage = ({ w, h }: { w: string, h?: string }) =>
     <div style={{ width: w, height: h, backgroundColor: '#ccc' }} />
@@ -70,7 +70,7 @@ const Products = () => {
                                     className='bg-gray-300 p-1 rounded-sm'
                                     onClick={() => router.push(`/admin/product/${i}`)}
                                 >
-                                    <Edit />
+                                    <PencilSquare />
                                 </button>
                             </div>
                         </div>

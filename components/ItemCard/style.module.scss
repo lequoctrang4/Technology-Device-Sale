@@ -1,0 +1,11 @@
+@tailwind components;
+
+@layer components {
+    .cart-default {
+        @apply col-auto rounded-md bg-gray-100 shadow-md p-4;
+
+        .origin-price {
+            @apply line-through text-gray-500 text-sm;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import eLink from '@/model/eLink'
 import Link from 'next/link'
 import React from 'react'
-import { ChevronRight } from 'react-feather'
+import { ChevronRight } from 'react-bootstrap-icons'
 
 const Breadcrumb = ({ links }: { links: Array<eLink> }) => {
     return (

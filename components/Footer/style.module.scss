@@ -1,0 +1,19 @@
+@tailwind components;
+
+@layer components {
+    .footer {
+        @apply py-6 text-white md:grid md:grid-cols-5;
+
+        li {
+            @apply ml-4;
+        }
+
+        a {
+            @apply hover:underline;
+        }
+
+        .logo {
+            @apply w-2/3 m-auto md:col-span-1;
+        }
+    }
+}
