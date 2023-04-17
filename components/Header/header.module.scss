@@ -3,19 +3,35 @@
 @layer components {
     .navigation {
         background-color: var(--primary);
-        z-index: 1;
-        @apply w-full text-white;
+        @apply z-[1] w-full text-white;
 
-        & > div {
-            @apply py-2 flex justify-between;
+        &>div {
+            @apply py-2 flex gap-4 items-center md:gap-2 lg:gap-0 md:justify-between;
+            
+            button {
+                @apply bg-red-500 p-2 rounded hover:brightness-125;
+            }
         }
 
-        button {
-            @apply gap-2 flex justify-center items-center bg-red-500 p-2 rounded-md hover:brightness-125;
+        .direct {
+            @apply hidden md:flex md:gap-2 md:p-0 md:bg-none md:flex-row md:static;
+
+            button {
+                @apply flex justify-around items-center w-[132px];
+            }
+
+            &__active {
+                background-color: var(--primary);
+                @apply visible flex flex-col gap-1 p-1 absolute top-full right-0;
+
+                button {
+                    @apply flex gap-2 items-center text-sm w-[120px];
+                }
+            }
         }
 
         .search-box {
-            @apply flex justify-between items-center gap-4 rounded px-3 py-2 bg-white text-gray-800 grow max-w-[45%];
+            @apply flex justify-between items-center gap-4 rounded px-3 py-2 bg-white text-gray-800 grow md:max-w-[45%];
         }
     }
 }

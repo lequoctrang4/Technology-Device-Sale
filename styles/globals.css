@@ -40,7 +40,7 @@
     }
 
     .searchbar input {
-        @apply grow; 
+        @apply grow;
     }
 }
 
@@ -59,11 +59,21 @@ input:focus {
     flex-grow: 1;
 }
 
+/* Hide arrows of inputs have type is number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
     scrollbar-width: auto;
     scrollbar-color: #cacaca #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
 }
 
 /* Chrome, Edge, and Safari */
