@@ -1,0 +1,21 @@
+@tailwind components;
+
+@layer components {
+    .userinfo {
+        @apply w-full ;
+
+        td {
+            @apply pb-4;
+        }
+
+
+        td:first-child {
+            width: 20%;
+        }
+
+        input {
+            @apply rounded-lg p-2
+        }
+
+    }
+}

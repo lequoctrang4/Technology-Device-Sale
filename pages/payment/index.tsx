@@ -45,7 +45,9 @@ export default function Cart() {
                         </div>
                         <div className="w-1/2 flex flex-row gap-3">
                             <div className="w-1/3 text-sm font-medium text-center text-gray-900 dark:text-gray-300">
-                                12.000.000đ
+                                <div className="inline-block align-middle">
+                                    12.000.000đ
+                                </div>
                             </div>
                             <div className=" w-1/3 text-sm font-medium text-center text-gray-900 dark:text-gray-300">
                                 2
@@ -100,7 +102,7 @@ export default function Cart() {
                         </div>
                         <div className="inline-flex gap-4">
                             <input type="text" className="grow border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-transparent" placeholder="Nhập mã giảm giá" />
-                            <button className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button className="grow bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Áp dụng
                             </button>
                         </div>
