@@ -14,16 +14,6 @@ import Footer from '@/components/Footer'
 export default function App({ Component, pageProps }: AppProps) {
 	const [user, setUser] = useState<eUser>(defaultUser);
 	const { push, pathname } = useRouter();
-	useEffect(() => {
-		const currentUser = getCookie('user');
-		if (currentUser) {
-			setUser({ ...user, role: parseInt(currentUser) })
-
-			if (pathname.includes('/admin')) {
-				currentUser === '2' ? push('/admin/product') : push('/')
-			}
-		}
-	}, [])
 
 	return (
 		<GlobalContext>

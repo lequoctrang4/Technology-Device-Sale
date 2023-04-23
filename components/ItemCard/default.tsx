@@ -1,37 +1,41 @@
 import React from 'react'
-import style from './style.module.scss'
-import { StarFill } from 'react-bootstrap-icons';
 import Link from 'next/link';
+import { StarFill } from 'react-bootstrap-icons';
 
-const DefaultCart = () => {
-    const url = 'https://cdn.tgdd.vn/Products/Images/42/279065/xiaomi-12t-bac-glr-1.jpg';
+import style from './style.module.scss'
+import eProduct from '@/model/eProduct';
+import { formatPrice, originalPrice } from '@/utils/price';
+import FiveStar from '../Utilities/FiveStar';
 
+const DefaultCart = ({ item }: { item: eProduct }) => {
+    let url = item?.image?.replaceAll(" ", "");
+    if (!url) url = 'https://gamek.mediacdn.vn/133514250583805952/2022/4/21/photo-1-16505168269091273389824.jpg';
     return (
         <div className={style['cart-default']}>
-            <Link href={'/product/sting-hong-sam'}>
+            <Link href={`/product/${item.id}`}>
                 <img alt="" src={url} className='w-full' />
-                <h4 className='text-center mt-3 hover:underline'>Xiaomi 12T</h4>
+                <h4 className='text-center mt-3 hover:underline'>{item.name}</h4>
             </Link>
             <div className='my-3'>
                 <div className='flex gap-1 my-2'>
                     <div className='grow text-center'>
-                        <p className='font-semibold'>10.890.000 VND</p>
+                        <p className='font-semibold'>
+                            {formatPrice(item.price)}
+                        </p>
                         <p className={style['origin-price']}>
-                            12.990.000 VND
+                            {originalPrice(item.price, item.salePercent)}
                         </p>
                     </div>
-                    <span className='btn-danger self-center'>
-                        -12%
-                    </span>
+                    {
+                        item.salePercent !== "0" &&
+                        <span className='btn-danger self-center'>
+                            -{item.salePercent}%
+                        </span>
+                    }
+
                 </div>
             </div>
-            <div className='flex justify-center gap-1'>
-                <StarFill color="gold" />
-                <StarFill color="gold" />
-                <StarFill color="gold" />
-                <StarFill color="gold" />
-                <StarFill color="gold" />
-            </div>
+            <FiveStar n={5} />
         </div>
     )
 }

@@ -2,30 +2,45 @@ import axios from 'axios';
 
 export const signIn = async (formValue) => {
     try {
-        // make axios post request
-        const res = await axios({
-            method: 'post',
-            url: `http://localhost/user/signIn`,
-            data: formValue,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        // mobile:
+        // password:
+        // const res = await axios({
+        //     method: 'post',
+        //     url: `http://localhost/signIn`,
+        //     data: formValue,
+        //     headers: { 'Content-Type': 'text/plain' },
+        // });
+        // console.log(res)
+
+        const resp = await axios.post('http://localhost/signIn', formValue, {
+            headers: { 'Content-Type': 'text/plain' },
         });
-        return res.data;
+        return resp;
     } catch (error) {
-        return error.response.data;
+        return error.response;
     }
 };
+
 export const signUp = async (formValue) => {
     try {
-        // make axios post request
+        //   {
+        // "name": "Lê Quốc Trạng",
+        // "mobile": "0399609015",
+        // "email": "lequoctrang5@gmail.com",
+        // "password": "Lequoctrang",
+        // "confirmPassword": "Lequoctrang"
+        // }
         const res = await axios({
             method: 'post',
-            url: `http://localhost/user/signUp`,
+            url: `http://localhost/signUp`,
             data: formValue,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            headers: {
+                'Content-Type': 'text/plain',
+            },
         });
         return res.data;
     } catch (error) {
-        return error.response.data;
+        return error.response;
     }
 };
 
@@ -39,7 +54,8 @@ export const getProfile = async (token) => {
         });
         return res.data;
     } catch (error) {
-        return error.response.data;
+        console.log(error)
+        return error?.response?.data;
     }
 };
 export const editProfile = async (token, formValue) => {
@@ -51,7 +67,7 @@ export const editProfile = async (token, formValue) => {
             data: formValue,
             headers: {
                 Authorization: `Bearer ${token}`,
-                'content-type': 'application/x-www-form-urlencoded',
+                'content-type': 'text/plain',
             },
         });
         return res.data;
@@ -68,7 +84,7 @@ export const setAvatar = async (token, formValue) => {
             data: formValue,
             headers: {
                 Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'application/raw',
             },
         });
         return res.data;
@@ -94,12 +110,12 @@ export const changePassword = async (token, formValue) => {
     try {
         // make axios post request
         const res = await axios({
-            method: 'post',
+            method: 'patch',
             url: `http://localhost/user/changePassword`,
             data: formValue,
             headers: {
                 Authorization: `Bearer ${token}`,
-                'content-type': 'application/x-www-form-urlencoded',
+                'content-type': 'text/plain',
             },
         });
         return res.data;
@@ -115,7 +131,7 @@ export const forgetPassword = async (formValue) => {
             method: 'post',
             url: `http://localhost/user/forgetPassword`,
             data: formValue,
-            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            headers: { 'content-type': 'text/plain' },
         });
         return res.data;
     } catch (error) {

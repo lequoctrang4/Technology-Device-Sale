@@ -17,7 +17,7 @@
             @apply hidden md:flex md:gap-2 md:p-0 md:bg-none md:flex-row md:static;
 
             button {
-                @apply flex justify-around items-center w-[132px];
+                @apply flex md:gap-1 lg:gap-2 justify-around items-center text-sm grow max-w-[124px];
             }
 
             &__active {

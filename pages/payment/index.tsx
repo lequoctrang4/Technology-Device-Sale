@@ -2,7 +2,6 @@ import { Trash } from 'react-bootstrap-icons';
 import style from './style.module.scss'
 
 export default function Cart() {
-
     const product_img = 'https://cdn.tgdd.vn/Products/Images/42/279065/xiaomi-12t-bac-glr-1.jpg';
 
     return (

@@ -11,7 +11,7 @@ export default function Cart() {
                 <div className="pb-5">
                     <h3>Giỏ hàng</h3>
                 </div>
-                <div className="md:grid md:grid-cols-4 lg:grid-cols-3 gap-4">
+                <div className="lg:grid md:grid-cols-4 lg:grid-cols-3 gap-4">
                     <div className="col-span-2 lg:grid-cols-3 flex flex-col gap-2">
                         <div className="flex flex-row max-w-[100%] p-4 bg-white border border-gray-200 rounded-lg">
                             <div className="w-1/2 flex flex-row gap-3 items-center">
@@ -34,7 +34,7 @@ export default function Cart() {
                         <Item index={0} />
                         <Item index={1} />
                     </div>
-                    <div className="col-auto mt-4 md:mt-0">
+                    <div className="col-auto mt-4 lg:mt-0">
                         <div className="flex flex-col max-w-[100%] gap-10 p-4 bg-white border border-gray-200 rounded-lg">
                             <div className="flex justify-between">
                                 <p>Tổng thanh toán</p>

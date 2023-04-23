@@ -5,20 +5,19 @@ import { ChevronRight } from 'react-bootstrap-icons'
 
 const Breadcrumb = ({ links }: { links: Array<eLink> }) => {
     return (
-        <h4 className="font-normal flex items-center">
-            {links.map((link: eLink) => {
-                if (link.path) {
-                    return <>
-                        <Link href={link.path} className="hover:underline">
-                            {link.name}
-                        </Link>
-                        <ChevronRight />
-                    </>
-                }
-                return <span>{link.name}</span>
+        <h5 className="font-normal flex items-center">
+            {
+                links.map((link: eLink, i: number) => {
+                    return link.path ?
+                        <p key={i}>
+                            <Link href={link.path} className="hover:underline">
+                                {link.name}
+                            </Link>
+                            <ChevronRight className='inline-block' />
+                        </p> : <p key={i}>{link.name}</p>
+                })
             }
-            )}
-        </h4>
+        </h5>
     )
 }
 
