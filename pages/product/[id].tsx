@@ -15,21 +15,34 @@ import { getProductsById } from '../api/productApi';
 import { defaultProduct } from '@/model/eProduct';
 import style from './id.module.scss';
 import { formatPrice } from '@/utils/price';
+import { useGContext } from '@/components/GlobalContext';
 
 const DetailProduct = () => {
     const router = useRouter();
     const [product, setProduct] = useState(defaultProduct);
+    const { allProducts, addItemToCart } = useGContext();
     const { id } = router.query;
     const bread = [
         { name: 'Điện thoại', path: '/product/mobile' },
-        { name: product.name },
+        { name: product.name.slice(0, 20) },
     ];
     let url = product?.image?.replaceAll(" ", "");
     if (!url) url = 'https://gamek.mediacdn.vn/133514250583805952/2022/4/21/photo-1-16505168269091273389824.jpg';
 
     useEffect(() => {
-        getProductsById(id).then(data => setProduct(data[0]))
+        // getProductsById(id).then(data => setProduct(data[0]))
+        const match = allProducts.find(_ => _.id === id);
+        if (match) setProduct(match);
+        else {
+            console.error('Need return home page!');
+            return;
+        }
     }, [id])
+
+    const buyNow = () => {
+        addItemToCart(product);
+        router.push('/cart')
+    }
 
     return (
         <div className="main">
@@ -79,19 +92,19 @@ const DetailProduct = () => {
                                         <button className="btn-dark-outline">
                                             <p>Xanh lam</p>
                                             <p className="text-xs text-stone-400">
-                                                24.000.000
+                                                {formatPrice(product.price)}
                                             </p>
                                         </button>
                                         <button className="btn-dark-outline">
                                             <p>Vàng đồng</p>
                                             <p className="text-xs text-stone-400">
-                                                22.990.000
+                                                {formatPrice(product.price)}
                                             </p>
                                         </button>
                                         <button className="btn-dark-outline">
                                             <p>Đen</p>
                                             <p className="text-xs text-stone-400">
-                                                22.990.000
+                                                {formatPrice(product.price)}
                                             </p>
                                         </button>
                                     </div>
@@ -102,10 +115,16 @@ const DetailProduct = () => {
                                     <p>Hot sale 30.04</p>
                                 </div>
                                 <div className="row-span-1 flex gap-2">
-                                    <button className="btn-danger grow">
+                                    <button
+                                        className="btn-danger grow"
+                                        onClick={buyNow}
+                                    >
                                         MUA NGAY
                                     </button>
-                                    <button className="btn-danger-outline text-center hover:brightness-90">
+                                    <button
+                                        className="btn-danger-outline text-center hover:brightness-90"
+                                        onClick={() => addItemToCart(product)}
+                                    >
                                         <CartPlus className="mx-auto" size={24} />
                                         <span style={{ fontSize: '0.5rem' }}>
                                             Thêm vào giỏ

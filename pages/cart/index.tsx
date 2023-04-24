@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import { Trash } from "react-bootstrap-icons";
 import Item from "./item";
+import { useGContext } from "@/components/GlobalContext";
 
 export default function Cart() {
     return (

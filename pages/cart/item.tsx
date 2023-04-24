@@ -1,3 +1,4 @@
+import { useGContext } from '@/components/GlobalContext'
 import React, { useState } from 'react'
 import { DashCircle, PlusCircle, Trash } from 'react-bootstrap-icons'
 
@@ -6,6 +7,8 @@ interface props {
 }
 
 const Item = ({ index }: props) => {
+    const { cart } = useGContext();
+    console.log(cart);
     const product_img = 'https://cdn.tgdd.vn/Products/Images/42/279065/xiaomi-12t-bac-glr-1.jpg';
     const [number, setNumber] = useState(0);
     const changeNumber = (n = 0, action = '') => {

@@ -33,7 +33,13 @@ const Header = () => {
         <>
             <nav className={style.navigation}>
                 <div className='main'>
-                    <Image src={Logo} alt='' width={80} />
+                    <Image 
+                        src={Logo} 
+                        alt='' 
+                        width={80} 
+                        onClick={()=>push('/')}
+                        className='hover:cursor-pointer'
+                    />
                     <form className={style['search-box']} onSubmit={handleLookUp}>
                         <input
                             type='text'
