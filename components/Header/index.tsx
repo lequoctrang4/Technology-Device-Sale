@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Search, Cart3, Truck, Person } from 'react-bootstrap-icons'
+import { Search, Cart3, Truck, PersonCircle } from 'react-bootstrap-icons'
 import { getCookie } from 'typescript-cookie';
 import 'react-notifications-component/dist/theme.css'
 import { ReactNotifications } from 'react-notifications-component'
@@ -8,32 +9,51 @@ import { ReactNotifications } from 'react-notifications-component'
 import style from './header.module.scss'
 import Logo from '@/asset/image/mewfone_1.png';
 import Authentication from '../Authentication';
-import { useRouter } from 'next/router';
+import { useGContext } from '../GlobalContext';
 import { getProfile } from '@/pages/api/userApi';
-
+import eUser from '@/model/eUser';
+import Link from 'next/link';
 
 const Header = () => {
     const { push } = useRouter();
-    const [keyword, setKeyword] = useState<string>("");
+    const { user, setUser, cart } = useGContext();
+    const [token, setToken] = useState('');
+    const [keyword, setKeyword] = useState("");
     const [loginModal, setLoginModal] = useState<boolean>(false);
-    const [isLogin, setIsLogin] = useState<boolean>(false);
-    // const [userToken, setUserToken] = useState();
 
     const handleLookUp = (e: React.SyntheticEvent) => {
         e.preventDefault();
         console.log(keyword)
     }
 
-    /* useEffect(() => {
-        const userToken = getCookie('user')
-        console.log(userToken);
-    }, []); */
+    useEffect(() => {
+        const tk = getCookie('user');
+        tk && setToken(tk);
+    }, [])
+
+    useEffect(() => {
+        if (token) {
+            getProfile(token).then(data => {
+                const user: eUser = {
+                    ...data[0],
+                    isAdmin: data[0].isAdmin === '1' ? true : false
+                };
+                setUser(user)
+            })
+        }
+    }, [token])
 
     return (
         <>
             <nav className={style.navigation}>
                 <div className='main'>
-                    <Image src={Logo} alt='' width={80} />
+                    <Image
+                        src={Logo}
+                        alt=''
+                        width={80}
+                        onClick={() => push('/')}
+                        className='hover:cursor-pointer'
+                    />
                     <form className={style['search-box']} onSubmit={handleLookUp}>
                         <input
                             type='text'
@@ -47,13 +67,19 @@ const Header = () => {
                             <Truck size={16} />
                             Tra cứu
                         </button>
-                        <button onClick={() => push('/cart')}>
+                        <button onClick={() => push('/cart')} className='relative'>
                             <Cart3 size={16} />
                             Giỏ hàng
+                            <div className={style['cart-quantity']}>
+                                {cart.quantity}
+                            </div>
                         </button>
-                        <button onClick={() => setLoginModal(true)}>
-                            <Person size={16} />
-                            {isLogin ? 'Welcome' : 'Đăng nhập'}
+                        <button>
+                            <PersonCircle size={16} />
+                            {
+                                user.name ? <Link href={`/profile/${user.id}`}>{user.name.split(' ').pop()}</Link> :
+                                    <span onClick={() => setLoginModal(true)}>Đăng nhập</span>
+                            }
                         </button>
                     </div>
                 </div>

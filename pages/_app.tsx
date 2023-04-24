@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<GlobalContext>
 			{
-				user.role === 2 ? (
+				user.isAdmin ? (
 					<>
 						{/* user is admin */}
 						<HeaderAdmin />

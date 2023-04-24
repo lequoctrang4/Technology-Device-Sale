@@ -44,6 +44,12 @@ export const signUp = async (formValue) => {
     }
 };
 
+export const getUserProfile = async (token) => {
+    const res = await axios.get('./get_handler', {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+};
+
 export const getProfile = async (token) => {
     try {
         // make axios post request

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './style.module.scss'
 import { setCookie } from 'typescript-cookie'
-import { getProfile, signIn } from '@/pages/api/userApi'
+import { getProfile, getUserProfile, signIn } from '@/pages/api/userApi'
 import 'react-notifications-component/dist/theme.css'
 import { NOTIFICATION_TYPE, Store } from 'react-notifications-component'
 
@@ -55,9 +55,8 @@ const SignIn = ({ callback }: { callback: Function }) => {
 
             setCookie('user', token, { expires: 7 });
             setNotification('success', titleNotify, messageNotify);
-            // callback(false);
-            console.log(token);
-            console.log(await getProfile(token));
+            callback(false);
+            
         }
     }
 
@@ -69,7 +68,7 @@ const SignIn = ({ callback }: { callback: Function }) => {
             </div>
             <div>
                 <label>Password</label>
-                <input type='text' name='password' required onChange={handleChange} />
+                <input type='password' name='password' required onChange={handleChange} />
             </div>
             <div>
                 <button className='btn-danger' onClick={handleLogin}>

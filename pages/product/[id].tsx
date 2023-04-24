@@ -15,10 +15,12 @@ import { getProductsById } from '../api/productApi';
 import { defaultProduct } from '@/model/eProduct';
 import style from './id.module.scss';
 import { formatPrice } from '@/utils/price';
+import { useGContext } from '@/components/GlobalContext';
 
 const DetailProduct = () => {
     const router = useRouter();
     const [product, setProduct] = useState(defaultProduct);
+    const { addItemToCart } = useGContext();
     const { id } = router.query;
     const bread = [
         { name: 'Điện thoại', path: '/product/mobile' },
@@ -30,6 +32,11 @@ const DetailProduct = () => {
     useEffect(() => {
         getProductsById(id).then(data => setProduct(data[0]))
     }, [id])
+
+    const buyNow = () => {
+        addItemToCart(product);
+        router.push('/cart');
+    }
 
     return (
         <div className="main">
@@ -102,10 +109,16 @@ const DetailProduct = () => {
                                     <p>Hot sale 30.04</p>
                                 </div>
                                 <div className="row-span-1 flex gap-2">
-                                    <button className="btn-danger grow">
+                                    <button
+                                        className="btn-danger grow"
+                                        onClick={buyNow}
+                                    >
                                         MUA NGAY
                                     </button>
-                                    <button className="btn-danger-outline text-center hover:brightness-90">
+                                    <button
+                                        className="btn-danger-outline text-center hover:brightness-90"
+                                        onClick={() => addItemToCart(product)}
+                                    >
                                         <CartPlus className="mx-auto" size={24} />
                                         <span style={{ fontSize: '0.5rem' }}>
                                             Thêm vào giỏ

@@ -1,3 +1,6 @@
+import { useGContext } from '@/components/GlobalContext'
+import { formatPrice } from '@/utils/price'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { DashCircle, PlusCircle, Trash } from 'react-bootstrap-icons'
 
@@ -6,8 +9,11 @@ interface props {
 }
 
 const Item = ({ index }: props) => {
-    const product_img = 'https://cdn.tgdd.vn/Products/Images/42/279065/xiaomi-12t-bac-glr-1.jpg';
+    const { cart } = useGContext();
+    const product = cart.detail[index].product;
     const [number, setNumber] = useState(0);
+    const url = product.image ? product.image.replaceAll(" ", "")
+        : 'https://cdn.tgdd.vn/Products/Images/42/279065/xiaomi-12t-bac-glr-1.jpg'
     const changeNumber = (n = 0, action = '') => {
         switch (action) {
             case 'add':
@@ -31,21 +37,25 @@ const Item = ({ index }: props) => {
 
     return (
         <div className="flex flex-row p-2 lg:p-4 bg-white border border-gray-200 rounded-lg">
-            <div className="w-1/2 flex flex-row text-sm font-medium text-gray-900 dark:text-gray-300">
+            <div className="w-1/2 flex flex-row text-sm font-medium text-gray-900">
                 <div className="flex flex-row items-center">
-                    <input type="checkbox" value="" className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2" />
+                    <input type="checkbox" value="" className="w-4 h-4 text-blue-500 border-gray-300 rounded" />
                     <label className="flex items-center">
-                        <img src={product_img} alt="product" width={100} height={100} />
+                        <img src={url} alt="product" width={100} height={100} />
                         <div className="inline-block align-middle px-2">
-                            <p>Điện thoại Samsung Galaxy Ultra S23</p>
-                            <span className="text-gray-400">Phân loại: Xám</span>
+                            <Link href={'/product/' + product.id} className='hover:underline'>
+                                <b>{product.name.slice(0, 40)}</b>
+                            </Link>
+                            <p className="text-gray-400">
+                                Phân loại: {product.color}
+                            </p>
                         </div>
                     </label>
                 </div>
             </div>
             <div className="w-1/2 flex items-center text-sm">
-                <div className="w-1/3 px-1 font-medium text-center justify-center text-gray-900 dark:text-gray-300">
-                    12.000.000đ
+                <div className="w-1/3 px-1 font-medium text-center justify-center text-gray-900">
+                    {formatPrice(product.price)}đ
                 </div>
                 <div className="w-1/3 px-1 font-medium text-center text-gray-900 dark:text-gray-300">
                     <div className="my-3 flex gap-1 items-center justify-center">

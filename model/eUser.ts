@@ -1,19 +1,22 @@
-// user role: 
-// 0 - not logged in
-// 1 - admin
-// 2 - customer
-
 interface eUser {
+    id: string,
     name: string,
     email: string,
-    role: number
+    isAdmin: boolean,
+    passwordChangedAt: string,
+    registeredAt: string,
+    lastLogin: string,
 };
 
 const defaultUser: eUser = {
-    name: '',
-    email: '',
-    role: 0
-}
+    id: "",
+    name: "",
+    email: "",
+    isAdmin: false,
+    lastLogin: "",
+    registeredAt: "",
+    passwordChangedAt: "",
+};
 
 export default eUser;
 export { defaultUser };

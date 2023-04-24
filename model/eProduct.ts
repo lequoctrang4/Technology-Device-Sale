@@ -9,7 +9,7 @@ interface eProduct {
     color: string,
 }
 
-const defaultProduct = {
+export const defaultProduct = {
     id: "",
     name: "",
     manufacturer: "",
@@ -20,5 +20,10 @@ const defaultProduct = {
     color: "",
 } as eProduct;
 
+export interface eItem {
+    quantity: number,
+    product: eProduct,
+    isSelected: boolean
+}
+
 export default eProduct;
-export {defaultProduct};
