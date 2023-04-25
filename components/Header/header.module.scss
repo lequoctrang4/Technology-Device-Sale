@@ -7,7 +7,7 @@
 
         &>div {
             @apply py-2 flex gap-4 items-center md:gap-2 lg:gap-0 md:justify-between;
-            
+
             button {
                 @apply bg-red-500 p-2 rounded hover:brightness-125;
             }
@@ -24,7 +24,7 @@
                 background-color: var(--primary);
                 @apply visible flex flex-col gap-1 p-1 absolute top-full right-0;
 
-                button {
+                button {    
                     @apply flex gap-2 items-center text-sm w-[120px];
                 }
             }
@@ -32,6 +32,10 @@
 
         .search-box {
             @apply flex justify-between items-center gap-4 rounded px-3 py-2 bg-white text-gray-800 grow md:max-w-[45%];
+        }
+
+        .cart-quantity {
+            @apply bg-gray-100 text-red-600 rounded-full text-xs flex justify-center items-center w-[16px] h-[16px] absolute bottom-[70%] left-0;
         }
     }
 }

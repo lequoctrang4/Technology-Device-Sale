@@ -19,6 +19,7 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<eUser>(defaultUser);
     const [allProducts, setAllProducts] = useState<Array<eProduct>>([]);
     const [cart, setCart] = useState(defaultCart);
+    
     const addItemToCart = (product: eProduct) => {
         const newCart = { ...cart };
         console.group('Begin: ');
