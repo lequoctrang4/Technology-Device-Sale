@@ -22,11 +22,11 @@ export default function Home() {
 	} as eProduct;
 
 	useEffect(() => {
-		// getAllProduct().then(data => setAllProducts(data));
-		const fakeData = Array(12).fill(myItem).map((_, i) => {
-			return { ..._, id: `${_.id}_${i}` }
-		})
-		setAllProducts(fakeData);
+		getAllProduct().then(data => setAllProducts(data));
+		// const fakeData = Array(12).fill(myItem).map((_, i) => {
+		// 	return { ..._, id: `${_.id}_${i}` }
+		// })
+		// setAllProducts(fakeData);
 	}, [])
 
 	return <HomePage />

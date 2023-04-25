@@ -1,25 +1,35 @@
-import eUser, { defaultUser } from '@/model/eUser';
+import {
+    createContext,
+    useContext,
+    useState
+} from "react"
+import { defaultUser } from '@/model/eUser';
 import eProduct, { defaultProduct } from '@/model/eProduct';
-import eCart, { defaultCart } from '@/model/eCart';
-import { createContext, useContext, useState } from "react"
+import { defaultCart } from '@/model/eCart';
+import eCate from '@/model/eCate';
+import menuContext from '@/model/menuContext';
 
-const GlobalCtx = createContext({
+
+const GlobalCtx = createContext<menuContext>({
     user: defaultUser,
-    setUser: (prev: eUser) => { },
+    setUser: () => { },
     allProducts: [defaultProduct],
-    setAllProducts: (prev: Array<eProduct>) => { },
+    setAllProducts: () => { },
     cart: defaultCart,
-    setCart: (prev: eCart) => { },
-    addItemToCart: (product: eProduct) => { }
+    setCart: () => { },
+    addItemToCart: (product: eProduct) => { },
+    categories: [],
+    setCategories: () => { }
 });
 
 const useGContext = () => useContext(GlobalCtx);
 
 const GlobalContext = ({ children }: { children: JSX.Element }) => {
-    const [user, setUser] = useState<eUser>(defaultUser);
+    const [user, setUser] = useState(defaultUser);
     const [allProducts, setAllProducts] = useState<Array<eProduct>>([]);
     const [cart, setCart] = useState(defaultCart);
-    
+    const [categories, setCategories] = useState<eCate[]>([]);
+
     const addItemToCart = (product: eProduct) => {
         const newCart = { ...cart };
         console.group('Begin: ');
@@ -56,7 +66,9 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
         setAllProducts,
         cart,
         setCart,
-        addItemToCart
+        addItemToCart,
+        categories,
+        setCategories
     }
     return (
         <GlobalCtx.Provider value={val}>
