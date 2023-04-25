@@ -12,7 +12,7 @@ const Profile = () => {
     }, [id])
 
     return (
-        <div>Profile</div>
+        <div className='main'>Auto Redirect...</div>
     )
 }
 

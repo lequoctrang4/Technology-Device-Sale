@@ -5,7 +5,7 @@ import { ChevronRight } from 'react-bootstrap-icons'
 
 const Breadcrumb = ({ links }: { links: Array<eLink> }) => {
     return (
-        <h5 className="font-normal flex items-center">
+        <h5 className="font-normal flex items-center mb-4">
             {
                 links.map((link: eLink, i: number) => {
                     return link.path ?

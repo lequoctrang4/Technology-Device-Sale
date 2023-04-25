@@ -2,9 +2,8 @@ import eFeature from '@/model/eFeature';
 import React, { useState } from 'react'
 
 const Features = ({ data }: { data: any }) => {
-    console.log(data['Màn hình']);
     return (
-        <div>
+        <div className='h-[75vh] overflow-hidden overflow-y-scroll'>
             <h3 className='text-center'>Tính năng</h3>
             {
                 Object.keys(data).map((keyword, i) => {

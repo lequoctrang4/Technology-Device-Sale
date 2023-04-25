@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Trash } from "react-bootstrap-icons";
 import { useGContext } from "@/components/GlobalContext";
 import Item from "./item";
-import { useGContext } from "@/components/GlobalContext";
 
 export default function Cart() {
     const { cart } = useGContext();

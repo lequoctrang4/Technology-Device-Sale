@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import style from './style.module.scss'
 import { setCookie } from 'typescript-cookie'
-import { getProfile, getUserProfile, signIn } from '@/pages/api/userApi'
 import 'react-notifications-component/dist/theme.css'
 import { NOTIFICATION_TYPE, Store } from 'react-notifications-component'
 
+import style from './style.module.scss'
+import { useGContext } from '../GlobalContext'
+import { getProfile, signIn } from '@/pages/api/userApi'
+
 const SignIn = ({ callback }: { callback: Function }) => {
     const [formValue, setformValue] = useState({ mobile: '', password: '' });
+    const { setUser } = useGContext();
     var notify = 'warning';
     var titleNotify = 'Thông tin tài khoản hoặc mật khẩu không đúng';
     var messageNotify = 'Vui lòng nhập lại'
@@ -56,7 +59,7 @@ const SignIn = ({ callback }: { callback: Function }) => {
             setCookie('user', token, { expires: 7 });
             setNotification('success', titleNotify, messageNotify);
             callback(false);
-            
+            getProfile(token).then(data => setUser(data[0]))
         }
     }
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Search, Cart3, Truck, PersonCircle } from 'react-bootstrap-icons'
-import { getCookie } from 'typescript-cookie';
 import 'react-notifications-component/dist/theme.css'
 import { ReactNotifications } from 'react-notifications-component'
 
@@ -10,14 +9,11 @@ import style from './header.module.scss'
 import Logo from '@/asset/image/mewfone_1.png';
 import Authentication from '../Authentication';
 import { useGContext } from '../GlobalContext';
-import { getProfile } from '@/pages/api/userApi';
-import eUser from '@/model/eUser';
 import Link from 'next/link';
 
-const Header = () => {
+const Header = ({ username }: { username: string }) => {
     const { push } = useRouter();
-    const { user, setUser, cart } = useGContext();
-    const [token, setToken] = useState('');
+    const { cart } = useGContext();
     const [keyword, setKeyword] = useState("");
     const [loginModal, setLoginModal] = useState<boolean>(false);
 
@@ -25,23 +21,6 @@ const Header = () => {
         e.preventDefault();
         console.log(keyword)
     }
-
-    useEffect(() => {
-        const tk = getCookie('user');
-        tk && setToken(tk);
-    }, [])
-
-    useEffect(() => {
-        if (token) {
-            getProfile(token).then(data => {
-                const user: eUser = {
-                    ...data[0],
-                    isAdmin: data[0].isAdmin === '1' ? true : false
-                };
-                setUser(user)
-            })
-        }
-    }, [token])
 
     return (
         <>
@@ -77,7 +56,7 @@ const Header = () => {
                         <button>
                             <PersonCircle size={16} />
                             {
-                                user.name ? <Link href={`/profile/${user.id}`}>{user.name.split(' ').pop()}</Link> :
+                                username ? <Link href={`/profile`}>{username.split(' ').pop()}</Link> :
                                     <span onClick={() => setLoginModal(true)}>Đăng nhập</span>
                             }
                         </button>

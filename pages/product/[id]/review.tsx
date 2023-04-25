@@ -1,7 +1,7 @@
 import React from 'react'
 import { StarFill } from 'react-bootstrap-icons'
 import FiveStar from '@/components/Utilities/FiveStar'
-import style from '../id.module.scss'
+import style from './id.module.scss'
 
 const Review = () => {
     return (

@@ -7,14 +7,14 @@ import eProduct from '@/model/eProduct';
 import { formatPrice, originalPrice } from '@/utils/price';
 import FiveStar from '../Utilities/FiveStar';
 
-const DefaultCart = ({ item }: { item: eProduct }) => {
+const DefaultCard = ({ item }: { item: eProduct }) => {
     let url = item?.image?.replaceAll(" ", "");
     if (!url) url = 'https://gamek.mediacdn.vn/133514250583805952/2022/4/21/photo-1-16505168269091273389824.jpg';
     return (
         <div className={style['cart-default']}>
-            <Link href={`/product/${item.id}`}>
+            <Link href={`/product?id=${item.id}`}>
                 <img alt="" src={url} className='w-full' />
-                <h4 className='text-center mt-3 hover:underline'>{item.name}</h4>
+                <h4 className='text-center mt-3 hover:underline min-h-[56px]'>{item.name}</h4>
             </Link>
             <div className='my-3'>
                 <div className='flex gap-1 my-2'>
@@ -40,4 +40,4 @@ const DefaultCart = ({ item }: { item: eProduct }) => {
     )
 }
 
-export default DefaultCart;
+export default DefaultCard;

@@ -10,9 +10,9 @@ export const signIn = async (formValue) => {
       data: formValue,
       headers: { "Content-Type": "text/plain" },
     });
-    return res.data;
+    return res;
   } catch (error) {
-    return error.response;
+    return error.response.data;
   }
 };
 

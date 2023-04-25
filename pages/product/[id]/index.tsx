@@ -13,13 +13,13 @@ import Breadcrumb from '@/components/Breadcrumb';
 import InfoModal from '@/components/Modal/Info';
 import { useGContext } from '@/components/GlobalContext';
 import { defaultProduct } from '@/model/eProduct';
+import eFeature from '@/model/eFeature';
 import { formatPrice } from '@/utils/price';
 import Review from './review';
 import Features from './feature';
-import style from '../id.module.scss';
-import eFeature from '@/model/eFeature';
+import style from './id.module.scss';
 
-const DetailProduct = () => {
+const ProductById = () => {
     const router = useRouter();
     const [product, setProduct] = useState(defaultProduct);
     const [features, setFeatures] = useState([]);
@@ -28,6 +28,7 @@ const DetailProduct = () => {
     const { id } = router.query;
     const bread = [
         { name: 'Điện thoại', path: '/product/mobile' },
+        { name: product?.manufacturer, path: `/product?manufacturer=${product?.manufacturer}` },
         { name: product.name?.slice(0, 20) },
     ];
     let url = product?.image?.replaceAll(" ", "");
@@ -45,7 +46,6 @@ const DetailProduct = () => {
                 }, {});
                 setFeatures(res);
             }
-
         });
     }, [id])
 
@@ -226,8 +226,8 @@ const DetailProduct = () => {
                         </div>
                         <Review />
                         {
-                            showFeatures && <InfoModal exit={setShowFeatures} top={25}>
-                                <Features data={features}/>
+                            showFeatures && <InfoModal exit={setShowFeatures} top={20}>
+                                <Features data={features} />
                             </InfoModal>
                         }
                     </>
@@ -237,4 +237,4 @@ const DetailProduct = () => {
     );
 };
 
-export default DetailProduct;
+export default ProductById;
