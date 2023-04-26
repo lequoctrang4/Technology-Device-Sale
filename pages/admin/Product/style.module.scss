@@ -6,7 +6,7 @@
     }
 
     .form {
-        @apply flex gap-4 items-center border border-neutral-300 rounded px-2;
+        @apply flex gap-4 items-center border border-neutral-300 rounded px-4;
 
         input {
             @apply grow;
@@ -28,7 +28,7 @@
         }
 
         input, textarea, select {
-            @apply w-full border border-gray-300 p-1;
+            @apply w-full border border-gray-300 p-2;
         }
 
         input[type='file'] {

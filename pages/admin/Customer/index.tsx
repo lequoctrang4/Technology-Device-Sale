@@ -1,19 +1,26 @@
 import Style from './style.module.scss'
 import { PencilSquare, Search } from 'react-bootstrap-icons'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import WarningModal from '@/components/WarningModal';
 import { useRouter } from 'next/router'
+import Pagination from '@/components/Pagination';
+import eUser from '@/model/eUser';
+import axios from 'axios';
 
 function CustomerList() {
-    const [activePage, setactivePage] = useState(1);
+    const [amount, setAmount] = useState(0);
     const [showModal, setShowModal] = useState(false);
-    const [activeListpage, setActiveListpage] = useState(true);
-    // const [activeAddpage, setActiveAddpage] = useState(false);
-    // const [activeInfopage, setActiveInfopage] = useState(false);
+    const [users, setUsers] = useState<eUser[]>([])
 
     const router = useRouter();
     console.log(router.query);
     const username = router.query.username;
+
+    useEffect(() => {
+        axios.get('http://localhost/users')
+            .then(resp => console.log(resp))
+            .catch(err => console.log(err))
+    }, [])
 
     return (
         <div className='col-span-4 p-8 flex flex-col'>
@@ -63,8 +70,8 @@ function CustomerList() {
                         </tbody>
                     </table>
                     {showModal && <WarningModal setShowModal={setShowModal}>
-                        <h3 
-                            className="text-base font-semibold leading-6 text-gray-900" 
+                        <h3
+                            className="text-base font-semibold leading-6 text-gray-900"
                             id="modal-title">
                             Xóa phanhaiha14
                         </h3>
@@ -75,19 +82,7 @@ function CustomerList() {
                         </div>
                     </WarningModal>}
                 </div>
-                <div className='flex justify-center justify-self-end'>
-                    <button className='rounded-tl rounded-bl border border-gray-900 p-1'>Prev</button>
-                    {[1, 2, 3].map((page: number) =>
-                        <button
-                            onClick={() => setactivePage(page)}
-                            key={page}
-                            className={activePage !== page ? Style.page_btn : Style.page_btn__active}
-                        >
-                            {page}
-                        </button>
-                    )}
-                    <button className='rounded-tr rounded-br border border-gray-900 p-1'>Next</button>
-                </div>
+                <Pagination callback={setAmount} />
             </ >}
         </div>
     );
