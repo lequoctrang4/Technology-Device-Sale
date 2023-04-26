@@ -1,19 +1,24 @@
-import Style from './style.module.scss'
 import { PencilSquare, Search } from 'react-bootstrap-icons'
 import React, { useEffect, useState } from 'react'
-import WarningModal from '@/components/WarningModal';
 import { useRouter } from 'next/router'
 import Pagination from '@/components/Pagination';
 import eUser from '@/model/eUser';
 import axios from 'axios';
 
+import Style from './style.module.scss'
+import { useDirect, useGContext } from '@/components/GlobalContext';
+import WarningModal from '@/components/WarningModal';
+
 function CustomerList() {
     const [amount, setAmount] = useState(0);
     const [showModal, setShowModal] = useState(false);
-    const [users, setUsers] = useState<eUser[]>([])
+    // const [users, setUsers] = useState<eUser[]>([])
 
+    // const [activeListpage, setActiveListpage] = useState(true);
+
+    useDirect();
     const router = useRouter();
-    console.log(router.query);
+
     const username = router.query.username;
 
     useEffect(() => {

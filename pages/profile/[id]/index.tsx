@@ -14,7 +14,7 @@ const UserProfile = () => {
             <Sidebar callback={setOption} />
             <div className='col-span-4'>
                 {
-                    option === "" && <Profile/>
+                    option === "" && <Profile />
                 }
                 {
                     option === "address" && <Address />

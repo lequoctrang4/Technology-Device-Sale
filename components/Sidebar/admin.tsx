@@ -3,18 +3,10 @@ import { Telephone, People, Person, ListTask } from 'react-bootstrap-icons'
 import style from '@/styles/header.module.scss'
 import Link from 'next/link'
 import { useGContext } from '../GlobalContext'
-import { removeCookie } from 'typescript-cookie'
 import { useRouter } from 'next/router'
-import { defaultUser } from '@/model/eUser'
 
 const AdminSidebar = () => {
-    const { user, setUser } = useGContext();
-    const { push } = useRouter();
-    const handleSignOut = () => {
-        removeCookie('user', { path: '' })
-        setUser(defaultUser);
-        push('/');
-    }
+    const { user } = useGContext();
     const categories = [
         {
             name: 'Quản lý sản phẩm',
@@ -44,28 +36,22 @@ const AdminSidebar = () => {
     return (
         <div className={style.sidebar}>
             <div className='main'>
-                <div className='flex'>
-                    <h3 className='text-center grow'>Hello {user.name}</h3>
-                    <button
-                        className='hover:underline hover:cursor-pointer flex items-center'
-                        onClick={handleSignOut}
-                    >
-                        Đăng xuất
-                    </button>
+                <div className='flex gap-8 items-center'>
+                    <ul className='mt-4 flex gap-4'>
+                        {categories.map((cate) =>
+                            <li
+                                className='btn-dark-outline flex items-center justify-center py-2 hover:cursor-pointer hover:underline'
+                                key={cate.name}
+                            >
+                                {cate.icon}
+                                <Link className='ml-4' href={`/admin/${cate.url}`}>
+                                    {cate.name}
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
+                    <h3 className='text-center'>Hello {user.name}</h3>
                 </div>
-                <ul className='mt-4 flex gap-4'>
-                    {categories.map((cate) =>
-                        <li
-                            className='btn-dark-outline flex items-center justify-center py-2 hover:cursor-pointer hover:underline'
-                            key={cate.name}
-                        >
-                            {cate.icon}
-                            <Link className='ml-4' href={`/admin/${cate.url}`}>
-                                {cate.name}
-                            </Link>
-                        </li>
-                    )}
-                </ul>
             </div>
         </div>
     )

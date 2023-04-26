@@ -28,15 +28,11 @@
         }
 
         input, textarea, select {
-            @apply w-full border border-gray-300 p-2;
-        }
-
-        input[type='file'] {
-            padding: 0;
+            @apply w-full border border-gray-300 rounded-md p-2;
         }
 
         textarea {
-            @apply p-2 h-[150px] resize-none;
+            @apply p-2 h-[300px] resize-none rounded;
         }
     }
 }

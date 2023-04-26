@@ -1,13 +1,14 @@
 import Style from './style.module.scss'
 import { Search } from 'react-bootstrap-icons'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import WarningModal from '@/components/WarningModal';
+import { useDirect, useGContext } from '@/components/GlobalContext';
 
 function CustomerList() {
     const router = useRouter();
     const [showModal, setShowModal] = useState(false);
-
+    useDirect();
 
     const [activePage, setactivePage] = useState(1);
     return (
@@ -18,7 +19,7 @@ function CustomerList() {
                     <button type='submit'> <Search /></button>
                 </form>
                 <div className='col-span-1 flex justify-end'>
-                    <button 
+                    <button
                         className='bg-primary p-2 text-white rounded '
                         onClick={() => router.push('/admin/employee/add')}
                     >

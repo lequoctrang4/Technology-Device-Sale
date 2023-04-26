@@ -4,6 +4,7 @@ import { Search } from 'react-bootstrap-icons';
 import style from './order.module.scss';
 import Pagination from '@/components/Pagination';
 import InfoModal from '@/components/Modal/Info';
+import { useDirect } from '@/components/GlobalContext';
 
 const Orders = () => {
     const [index, setIndex] = useState<number>(0);
@@ -12,6 +13,7 @@ const Orders = () => {
     const [showModal, setShowModal] = useState<Boolean>(false);
     const states = ['Đang chờ xác nhận', 'Đã xác nhận', 'Đang giao', 'Đã giao'];
 
+    useDirect();
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then((resp) => resp.json())

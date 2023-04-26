@@ -10,7 +10,6 @@ const Add = () => {
         { name: 'Quản lý sản phẩm', path: '/admin/product' },
         { name: 'Thêm sản phẩm mới' },
     ];
-    const [field, setField] = useState(false);
     const [rows, setRows] = useState([{}]);
     const [formValue, setFormValue] = useState({
         name: '',
@@ -53,9 +52,18 @@ const Add = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const token = getCookie('user');
-        console.log(token)
-        addProduct(token, formValue).then((resp) => {
-            console.log(resp);
+        addProduct(token, formValue).then(() => {
+            alert('success!');
+            setFormValue({
+                name: '',
+                color: '',
+                salePercent: '',
+                price: '',
+                manufacturer: '',
+                category: '',
+                html: '',
+                image: '',
+            });
         });
     };
 
@@ -64,7 +72,7 @@ const Add = () => {
             <Breadcrumb links={bread} />
             <div className="flex justify-between my-4">
                 <h3>Thêm sản phẩm mới</h3>
-                <div className="flex gap-4 my-4">
+                {/* <div className="flex gap-4 my-4">
                     <button
                         onClick={handleAddRow}
                         className="bg-primary text-white p-1 rounded"
@@ -77,7 +85,7 @@ const Add = () => {
                     >
                         Xóa thuộc tính
                     </button>
-                </div>
+                </div> */}
             </div>
             <form onSubmit={handleSubmit} className={style.product_edit}>
                 <div className="grid grid-cols-2 gap-3">
@@ -88,6 +96,7 @@ const Add = () => {
                                 type="text"
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="name"
+                                value={formValue.name}
                                 onChange={handleChangeForm}
                             />
                         </div>
@@ -111,6 +120,7 @@ const Add = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="manufacturer"
                                 onChange={handleChangeForm}
+                                value={formValue.manufacturer}
                             />
                         </div>
                         <div>
@@ -120,6 +130,7 @@ const Add = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="color"
                                 onChange={handleChangeForm}
+                                value={formValue.color}
                             />
                         </div>
                         <div>
@@ -129,6 +140,7 @@ const Add = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="price"
                                 onChange={handleChangeForm}
+                                value={formValue.price}
                             />
                         </div>
                         <div>
@@ -138,11 +150,12 @@ const Add = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="salePercent"
                                 onChange={handleChangeForm}
+                                value={formValue.salePercent}
                             />
                         </div>
                     </div>
                     <div className="col-span-1">
-                        <table className="mt-6 w-full">
+                        {/* <table className="mt-6 w-full">
                             <tbody>
                                 {rows.map((item, index) => {
                                     return (
@@ -211,12 +224,25 @@ const Add = () => {
                                     );
                                 })}
                             </tbody>
-                        </table>
+                        </table> */}
+                        <div>
+                            <label>Link sản phẩm</label>
+                            <input
+                                type="text"
+                                name="image"
+                                onChange={handleChangeForm}
+                                value={formValue.image}
+                            />
+                        </div>
+                        <div>
+                            <label>Mô tả</label>
+                            <textarea
+                                name="html"
+                                onChange={handleChangeForm}
+                                value={formValue.html}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Mô tả</label>
-                    <textarea />
                 </div>
                 <div className="flex justify-end gap-8">
                     <Link

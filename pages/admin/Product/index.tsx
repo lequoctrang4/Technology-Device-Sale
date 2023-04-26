@@ -9,13 +9,16 @@ import AdminCard from '@/components/ItemCard/admin';
 import { getAllCategory, getAllProduct } from '@/pages/api/productApi';
 import eProduct from '@/model/eProduct';
 import eCate from '@/model/eCate';
+import { useDirect } from '@/components/GlobalContext';
 
 const Products = () => {
     const router = useRouter();
     const [amount, setAmount] = useState(0);
     const [allProducts, setAllProducts] = useState<eProduct[]>([]);
     const [categories, setCategories] = useState<eCate[]>([]);
+    const [brand, setBrand] = useState("");
 
+    useDirect();
     useEffect(() => {
         getAllProduct().then(data => setAllProducts(data));
         getAllCategory().then(data => setCategories(data));
@@ -36,10 +39,12 @@ const Products = () => {
                         <li className={style.dropdown_sub}>
                             Theo thương hiệu
                             <ul>
-                                <li>Samsung</li>
-                                <li>Apple</li>
-                                <li>Nokia</li>
-                                <li>Vivo</li>
+                                <li onClick={() => setBrand('')}>Tất cả</li>
+                                <li onClick={() => setBrand('Samsung')}>Samsung</li>
+                                <li onClick={() => setBrand('Apple')}>Apple</li>
+                                <li onClick={() => setBrand('Xiaomi')}>Xiaomi</li>
+                                <li onClick={() => setBrand('Vivo')}>Vivo</li>
+                                <li onClick={() => setBrand('HP')}>HP</li>
                             </ul>
                         </li>
                         <li className={style.dropdown_sub}>
@@ -67,6 +72,7 @@ const Products = () => {
             <div className='my-6'>
                 {
                     allProducts
+                        .filter(item => item.manufacturer.includes(brand))
                         .slice(amount * 5, (amount + 1) * 5)
                         .map((item, i: number) =>
                             <AdminCard product={item} key={i} />
