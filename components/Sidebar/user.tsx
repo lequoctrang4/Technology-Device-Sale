@@ -1,29 +1,41 @@
 import React from 'react'
 import { Cart3, GeoAlt, PersonCircle } from 'react-bootstrap-icons';
+import { useRouter } from 'next/router';
+import { removeCookie } from 'typescript-cookie';
+
 import style from '@/styles/header.module.scss'
+import { useGContext } from '../GlobalContext';
+import { defaultUser } from '@/model/eUser';
 
 const UserSidebar = ({ callback }: { callback: Function }) => {
+    const { push } = useRouter();
+    const { setUser } = useGContext();
     const categories = [
         {
             name: 'Thông tin cá nhân',
-            icon: <PersonCircle size={20}/>,
+            icon: <PersonCircle size={20} />,
             status: false,
             value: ''
         }, {
             name: 'Địa chỉ',
-            icon: <GeoAlt size={20}/>,
+            icon: <GeoAlt size={20} />,
             status: false,
             value: 'address'
         }, {
             name: 'Lịch sử mua hàng',
-            icon: <Cart3 size={20}/>,
+            icon: <Cart3 size={20} />,
             status: false,
             value: 'history'
         }
     ];
+    const handleSignOut = () => {
+        removeCookie('user', { path: '' })
+        setUser(defaultUser);
+        push('/');
+    }
 
     return (
-        <div className={style.sidebar}>
+        <div className='py-8 px-4 col-span-1 bg-red-100'>
             <h3>Hello User</h3>
             <ul>
                 {
@@ -38,6 +50,11 @@ const UserSidebar = ({ callback }: { callback: Function }) => {
                         </li>)
                 }
             </ul>
+            <div className='flex justify-center'>
+                <button className='btn-dark-outline' onClick={handleSignOut}>
+                    Đăng nhập
+                </button>
+            </div>
         </div>
     )
 }

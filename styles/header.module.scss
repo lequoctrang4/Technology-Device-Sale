@@ -12,6 +12,6 @@
     }
 
     .sidebar {
-        @apply py-8 px-4 col-span-1 bg-red-100;
+        @apply py-3 bg-red-100 flex;
     }
 }

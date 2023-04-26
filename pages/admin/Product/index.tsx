@@ -1,22 +1,29 @@
 import Pagination from '@/components/Pagination'
 import style from './style.module.scss'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import { PencilSquare, Search } from 'react-bootstrap-icons'
-
-const PlaceholderImage = ({ w, h }: { w: string, h?: string }) =>
-    <div style={{ width: w, height: h, backgroundColor: '#ccc' }} />
+import { Search } from 'react-bootstrap-icons'
+import AdminCard from '@/components/ItemCard/admin';
+import { getAllCategory, getAllProduct } from '@/pages/api/productApi';
+import eProduct from '@/model/eProduct';
+import eCate from '@/model/eCate';
 
 const Products = () => {
     const router = useRouter();
-    const [amount, setAmount] = useState<number>(0);
-    return (
-        <div className='flex flex-col col-span-4 p-8'>
-            <h3 className='font-normal'>Quản lý sản phẩm</h3>
+    const [amount, setAmount] = useState(0);
+    const [allProducts, setAllProducts] = useState<eProduct[]>([]);
+    const [categories, setCategories] = useState<eCate[]>([]);
 
-            {/* Filter */}
+    useEffect(() => {
+        getAllProduct().then(data => setAllProducts(data));
+        getAllCategory().then(data => setCategories(data));
+    }, [])
+
+    return (
+        <div className='main my-6'>
+            <h3 className='font-normal'>Quản lý sản phẩm</h3>
             <div className='grid grid-cols-6 gap-4 mt-4'>
                 <form className={`col-start-1 col-span-4 ${style.form}`}>
                     <input placeholder='Nhập mã sản phẩm hoặc từ khóa' />
@@ -38,19 +45,19 @@ const Products = () => {
                         <li className={style.dropdown_sub}>
                             Theo loại
                             <ul>
-                                <li>Điện thoại</li>
-                                <li>Máy tính bảng</li>
-                                <li>Laptop</li>
-                                <li>Phụ kiện</li>
+                                {
+                                    categories.map(cate =>
+                                        <li key={cate.id}>{cate.title}</li>
+                                    )
+                                }
                             </ul>
                         </li>
                     </ul>
                 </div>
 
                 <Link
-                    href={'/admin/product/add'} 
+                    href={'/admin/product/add'}
                     className='bg-primary p-2 text-white rounded col-span-1'
-                    
                 >
                     Thêm sản phẩm
                 </Link>
@@ -59,27 +66,14 @@ const Products = () => {
             {/* All products */}
             <div className='my-6'>
                 {
-                    Array.from(Array(10).keys()).map((i: number) =>
-                        <div className={style.product} key={i}>
-                            <PlaceholderImage w={'100%'} h={'150px'} />
-                            <h4>Samsung Galaxy A04</h4>
-                            <p className='text-sm'>ID: ...</p>
-                            <div className='flex justify-between items-center'>
-                                <p>Giá: 2.500.000</p>
-                                <button
-                                    className='bg-gray-300 p-1 rounded-sm'
-                                    onClick={() => router.push(`/admin/product/${i}`)}
-                                >
-                                    <PencilSquare />
-                                </button>
-                            </div>
-                        </div>
-                    )
+                    allProducts
+                        .slice(amount * 5, (amount + 1) * 5)
+                        .map((item, i: number) =>
+                            <AdminCard product={item} key={i} />
+                        )
                 }
             </div>
-
-            {/* Pages */}
-            <Pagination callback={setAmount}/>
+            <Pagination callback={setAmount} />
         </div>
     )
 }

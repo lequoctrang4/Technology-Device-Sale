@@ -9,7 +9,7 @@ const Outstanding = () => {
 	return (
 		<div className='my-8'>
 			<h2>Sản phẩm nổi bật</h2>
-			<div className='product_list'>
+			<div className='product_list mt-3'>
 				{
 					allProducts.map((item: eProduct) =>
 						<DefaultCard key={item.id} item={item} />

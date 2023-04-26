@@ -6,10 +6,12 @@ import { NOTIFICATION_TYPE, Store } from 'react-notifications-component'
 import style from './style.module.scss'
 import { useGContext } from '../GlobalContext'
 import { getProfile, signIn } from '@/pages/api/userApi'
+import { useRouter } from 'next/router'
 
 const SignIn = ({ callback }: { callback: Function }) => {
     const [formValue, setformValue] = useState({ mobile: '', password: '' });
     const { setUser } = useGContext();
+    const { push } = useRouter()
     var notify = 'warning';
     var titleNotify = 'Thông tin tài khoản hoặc mật khẩu không đúng';
     var messageNotify = 'Vui lòng nhập lại'
@@ -59,7 +61,10 @@ const SignIn = ({ callback }: { callback: Function }) => {
             setCookie('user', token, { expires: 7 });
             setNotification('success', titleNotify, messageNotify);
             callback(false);
-            getProfile(token).then(data => setUser(data[0]))
+            getProfile(token).then(data => {
+                setUser(data[0]);
+                if (data[0].isAdmin === '1') push('/admin/product')
+            })
         }
     }
 

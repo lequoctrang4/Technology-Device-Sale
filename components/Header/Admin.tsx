@@ -7,21 +7,20 @@ import Image from 'next/image'
 const HeaderAdmin = () => {
     return (
         <nav className={style.navigation}>
-            <div>
-                <h1>Mewfone</h1>
+            <div className='w-11/12 mx-auto'>
                 <Image
                     src={logo}
                     alt="logo"
                     width={100}
                 />
                 <div className='flex flex-row gap-6'>
-                    <button className='flex justify-center bg-red-500 rounded-lg px-2'>
+                    <button className='flex items-center justify-center bg-red-500 rounded-lg px-2'>
                         Thông báo
-                        <Bell />
+                        <Bell className='ml-3' />
                     </button>
-                    <button className='flex justify-center bg-red-500 rounded-lg px-2'>
+                    <button className='flex items-center justify-center bg-red-500 rounded-lg px-2'>
                         Cài đặt
-                        <Gear />
+                        <Gear className='ml-3' />
                     </button>
                 </div>
             </div>

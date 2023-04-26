@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import ProductById from './[id]';
-import ProductByCategory from './[category]';
-import ProductByManufacturer from './[manufacturer]';
+import ProductById from './id';
+import ProductByCategory from './categoty';
+import ProductByManufacturer from './manufacturer';
 
 export default function Product() {
     const route = useRouter();

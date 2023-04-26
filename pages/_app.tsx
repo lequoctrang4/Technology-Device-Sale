@@ -12,48 +12,18 @@ import GlobalContext from '@/components/GlobalContext'
 import { getProfile } from './api/userApi'
 
 export default function App({ Component, pageProps }: AppProps) {
-	const [user, setUser] = useState<eUser>(defaultUser);
-	const [token, setToken] = useState('');
-
-	useEffect(() => {
-		/* get token user from cookie, if it exist then set user is logged */
-		const tk = getCookie('user');
-		tk && setToken(tk);
-	}, []);
-
-	useEffect(() => {
-		if (token) {
-			getProfile(token).then(data => {
-				const user: eUser = {
-					...data[0],
-					isAdmin: data[0].isAdmin === '1' ? true : false
-				};
-				setUser(user);
-			})
-		}
-	}, [token])
-
 	return (
 		<GlobalContext>
 			{
-				user.isAdmin ? (
-					<>
-						{/* user is admin */}
-						<HeaderAdmin />
-						<div className='grid grid-cols-5'>
+				<>
+					<Header />
+						<div className='ltw_app'>
 							<Sidebar />
 							<Component {...pageProps} />
 						</div>
-					</>) : (
-					<>
-						{/* user is customer or not logged in */}
-						<Header username={user.name}/>
-						<Component {...pageProps} />
-						<Footer />
-					</>
-				)
+					<Footer />
+				</>
 			}
-
 		</GlobalContext>
 	)
 }

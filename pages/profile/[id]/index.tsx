@@ -13,8 +13,6 @@ const UserProfile = () => {
         <div className='grid grid-cols-5'>
             <Sidebar callback={setOption} />
             <div className='col-span-4'>
-                {/* <button className='btn-danger' onClick={()=>setOption('address')}>Address</button>
-                <button className='btn-danger' onClick={()=>setOption('history')}>History</button> */}
                 {
                     option === "" && <Profile/>
                 }

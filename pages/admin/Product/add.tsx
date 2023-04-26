@@ -8,10 +8,10 @@ const Add = () => {
         { name: 'Quản lý sản phẩm', path: '/admin/product' },
         { name: 'Thêm sản phẩm mới' },
     ];
-    const [field, setField] = useState<Boolean>(false);
+    const [field, setField] = useState(false);
 
     return (
-        <div className='flex flex-col col-span-4 p-8'>
+        <div className='main py-6'>
             <Breadcrumb links={bread} />
             <div className="flex justify-between my-4">
                 <h3>Thêm sản phẩm mới</h3>
@@ -37,8 +37,9 @@ const Add = () => {
                     <div className="w-1/2">
                         <label>Tải ảnh lên</label>
                         <input
-                            type="file"
+                            type="text"
                             className="w-full border border-gray-300"
+                            placeholder='Link ảnh'
                         />
                     </div>
                     <div className="w-1/2 grid grid-cols-2 gap-4">

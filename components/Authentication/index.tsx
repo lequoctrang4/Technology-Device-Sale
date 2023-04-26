@@ -23,7 +23,7 @@ const Authentication = ({ callback }: { callback: Function }) => {
             footer={<SignUp.Footer callback={setOption}/>}
             top={50}
         >
-            <SignUp />
+            <SignUp callback={callback}/>
         </InfoModal>
     )
 }

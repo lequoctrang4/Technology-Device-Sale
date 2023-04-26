@@ -9,7 +9,7 @@ function Brands() {
     return (
         <div className='my-8'>
             <h2>Thương hiệu nổi bật</h2>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 mt-3'>
                 {
                     images.map((img: any, index: number) =>
                         <div className='rounded-xl overflow-hidden' key={index}>

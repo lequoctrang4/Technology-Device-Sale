@@ -17,7 +17,7 @@ const Detail = () => {
     ];
 
     return (
-        <div className="col-span-4 p-8">
+        <div className="main py-6">
             <Breadcrumb links={bread} />
             <div className="flex justify-between my-4">
                 <h3>Hiệu chỉnh</h3>

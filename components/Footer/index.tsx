@@ -3,9 +3,12 @@ import Logo from '@/asset/image/mewfone.png'
 import Image from 'next/image'
 import style from './style.module.scss'
 import Link from 'next/link'
+import { useGContext } from '../GlobalContext'
 
 const Footer = () => {
-    return (
+    const { user } = useGContext();
+
+    return user.isAdmin === '1' ? (<></>) : (
         <footer className={'bg-primary'}>
             <div className={'main ' + style.footer}>
                 <ul className='md:col-span-2'>

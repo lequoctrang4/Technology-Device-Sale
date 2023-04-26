@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
-import { getCookie } from 'typescript-cookie';
 
 import HomePage from './home';
 import { getAllCategory, getAllProduct } from './api/productApi'
 import { useGContext } from '@/components/GlobalContext';
 import eCate from '@/model/eCate';
-import { getProfile } from './api/userApi';
-import eUser from '@/model/eUser';
 
 /* const myItem = {
 	id: 'macbook-air-m2-22',
@@ -22,6 +19,8 @@ import eUser from '@/model/eUser';
 
 export default function Home() {
 	const { setAllProducts, setCategories } = useGContext();
+	const { user } = useGContext();
+	const { push } = useRouter();
 	useEffect(() => {
 		/* get all products from database */
 		getAllProduct().then(data => {
@@ -52,6 +51,10 @@ export default function Home() {
 			})
 			setCategories(res);
 		})
+	}, [])
+	useEffect(() => {
+		if (user.isAdmin === '1')
+			push('/admin')
 	}, [])
 
 	return <HomePage />

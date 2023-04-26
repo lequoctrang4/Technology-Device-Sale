@@ -18,7 +18,7 @@ const InfoModal = (props: modalProps) => {
                 <div className="flex items-end justify-center p-4 text-center sm:items-center sm:p-0">
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className="absolute transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+                        className="absolute transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl"
                         style={{ top: props.top ?? 90 }}
                     >
                         <div className='py-2 px-4 border-gray-100 border-b flex justify-between'>
