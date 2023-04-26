@@ -3,18 +3,10 @@ import { Telephone, People, Person, ListTask } from 'react-bootstrap-icons'
 import style from '@/styles/header.module.scss'
 import Link from 'next/link'
 import { useGContext } from '../GlobalContext'
-import { removeCookie } from 'typescript-cookie'
 import { useRouter } from 'next/router'
-import { defaultUser } from '@/model/eUser'
 
 const AdminSidebar = () => {
-    const { user, setUser } = useGContext();
-    const { push } = useRouter();
-    const handleSignOut = () => {
-        removeCookie('user', { path: '' })
-        setUser(defaultUser);
-        push('/');
-    }
+    const { user} = useGContext();
     const categories = [
         {
             name: 'Quản lý sản phẩm',
@@ -46,12 +38,6 @@ const AdminSidebar = () => {
             <div className='main'>
                 <div className='flex'>
                     <h3 className='text-center grow'>Hello {user.name}</h3>
-                    <button
-                        className='hover:underline hover:cursor-pointer flex items-center'
-                        onClick={handleSignOut}
-                    >
-                        Đăng xuất
-                    </button>
                 </div>
                 <ul className='mt-4 flex gap-4'>
                     {categories.map((cate) =>

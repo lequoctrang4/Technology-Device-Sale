@@ -1,18 +1,19 @@
-import Style from './style.module.scss'
 import { PencilSquare, Search } from 'react-bootstrap-icons'
-import React, { useState } from 'react'
-import WarningModal from '@/components/WarningModal';
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+
+import Style from './style.module.scss'
+import WarningModal from '@/components/WarningModal';
+import { useDirect, useGContext } from '@/components/GlobalContext';
 
 function CustomerList() {
     const [activePage, setactivePage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [activeListpage, setActiveListpage] = useState(true);
-    // const [activeAddpage, setActiveAddpage] = useState(false);
-    // const [activeInfopage, setActiveInfopage] = useState(false);
-
+    
+    useDirect();
     const router = useRouter();
-    console.log(router.query);
+
     const username = router.query.username;
 
     return (
@@ -63,8 +64,8 @@ function CustomerList() {
                         </tbody>
                     </table>
                     {showModal && <WarningModal setShowModal={setShowModal}>
-                        <h3 
-                            className="text-base font-semibold leading-6 text-gray-900" 
+                        <h3
+                            className="text-base font-semibold leading-6 text-gray-900"
                             id="modal-title">
                             Xóa phanhaiha14
                         </h3>

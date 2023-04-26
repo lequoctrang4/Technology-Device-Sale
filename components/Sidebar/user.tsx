@@ -9,7 +9,7 @@ import { defaultUser } from '@/model/eUser';
 
 const UserSidebar = ({ callback }: { callback: Function }) => {
     const { push } = useRouter();
-    const { setUser } = useGContext();
+    const { setUser, user } = useGContext();
     const categories = [
         {
             name: 'Thông tin cá nhân',
@@ -35,13 +35,13 @@ const UserSidebar = ({ callback }: { callback: Function }) => {
     }
 
     return (
-        <div className='py-8 px-4 col-span-1 bg-red-100'>
-            <h3>Hello User</h3>
-            <ul>
+        <div className='py-8 px-4 col-span-1 bg-red-100 min-h-[70vh]'>
+            <h3 className='text-center'>{user.name}</h3>
+            <ul className='py-4'>
                 {
                     categories.map(cate =>
                         <li
-                            className='flex items-center py-2 hover:cursor-pointer hover:underline'
+                            className='flex items-center justify-end py-2 hover:cursor-pointer hover:underline'
                             key={cate.name}
                             onClick={() => callback(cate.value)}
                         >
@@ -52,7 +52,7 @@ const UserSidebar = ({ callback }: { callback: Function }) => {
             </ul>
             <div className='flex justify-center'>
                 <button className='btn-dark-outline' onClick={handleSignOut}>
-                    Đăng nhập
+                    Đăng xuất
                 </button>
             </div>
         </div>

@@ -9,6 +9,7 @@ import AdminCard from '@/components/ItemCard/admin';
 import { getAllCategory, getAllProduct } from '@/pages/api/productApi';
 import eProduct from '@/model/eProduct';
 import eCate from '@/model/eCate';
+import { useDirect } from '@/components/GlobalContext';
 
 const Products = () => {
     const router = useRouter();
@@ -16,6 +17,7 @@ const Products = () => {
     const [allProducts, setAllProducts] = useState<eProduct[]>([]);
     const [categories, setCategories] = useState<eCate[]>([]);
 
+    useDirect();
     useEffect(() => {
         getAllProduct().then(data => setAllProducts(data));
         getAllCategory().then(data => setCategories(data));

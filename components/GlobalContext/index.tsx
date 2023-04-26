@@ -1,6 +1,7 @@
 import {
     createContext,
     useContext,
+    useEffect,
     useState
 } from "react"
 import { defaultUser } from '@/model/eUser';
@@ -8,6 +9,7 @@ import eProduct, { defaultProduct } from '@/model/eProduct';
 import { defaultCart } from '@/model/eCart';
 import eCate from '@/model/eCate';
 import menuContext from '@/model/menuContext';
+import { useRouter } from "next/router";
 
 const GlobalCtx = createContext<menuContext>({
     user: defaultUser,
@@ -22,6 +24,14 @@ const GlobalCtx = createContext<menuContext>({
 });
 
 const useGContext = () => useContext(GlobalCtx);
+
+const useDirect = () => {
+    const { user } = useGContext();
+    const { push } = useRouter();
+    useEffect(() => {
+        user.isAdmin === '0' && push('/');
+    }, []);
+}
 
 const GlobalContext = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState(defaultUser);
@@ -77,4 +87,4 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
 }
 
 export default GlobalContext;
-export { useGContext };
+export { useGContext, useDirect };

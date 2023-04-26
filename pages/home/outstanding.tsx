@@ -11,7 +11,7 @@ const Outstanding = () => {
 			<h2>Sản phẩm nổi bật</h2>
 			<div className='product_list mt-3'>
 				{
-					allProducts.map((item: eProduct) =>
+					allProducts.slice(0, 15).map((item: eProduct) =>
 						<DefaultCard key={item.id} item={item} />
 					)
 				}
