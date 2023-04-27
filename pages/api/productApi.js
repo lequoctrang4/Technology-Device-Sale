@@ -4,8 +4,8 @@ export const getProductsByCate = async (category_id) => {
     try {
         // make axios post request
         const res = await axios({
-            method: 'get',
-            url: `localhost/products/?categoryId=${category_id}`,
+          method: "get",
+          url: `http://localhost/products/?categoryId=${category_id}`,
         });
         return res.data;
     } catch (error) {
@@ -205,7 +205,7 @@ export const addProduct = async (token, formValue) => {
       data: formValue,
       headers: {
         Authorization: `Bearer ${token}`,
-        "content-type": "application/text/plain",
+        "content-type": "application/json",
       },
     });
     return res.data;
@@ -223,7 +223,7 @@ export const editProduct = async (token, formValue) => {
       data: formValue,
       headers: {
         Authorization: `Bearer ${token}`,
-        "content-type": "application/text/plain",
+        "content-type": "application/json",
       },
     });
     return res.data;
@@ -239,7 +239,7 @@ export const deleteProduct = async (token, id) => {
       url: `http://localhost/product?id=${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
-        "content-type": "application/text/plain",
+        "content-type": "application/json",
       },
     });
     console.log(res);

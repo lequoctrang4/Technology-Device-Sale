@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { Search } from 'react-bootstrap-icons'
 import AdminCard from '@/components/ItemCard/admin';
-import { getAllCategory, getAllProduct } from '@/pages/api/productApi';
+import { getAllCategory, getAllProduct, getProductsByCate } from '@/pages/api/productApi';
 import eProduct from '@/model/eProduct';
 import eCate from '@/model/eCate';
 import { useDirect, useGContext } from '@/components/GlobalContext';
@@ -19,7 +19,7 @@ const Products = () => {
     const [categories, setCategories] = useState<eCate[]>([]);
     const [brand, setBrand] = useState("");
     const [keyword, setKeyword] = useState("");
-
+    
     useDirect();
     useEffect(() => {
         getAllProduct().then(data => setAllProducts(data));
@@ -30,7 +30,13 @@ const Products = () => {
         e.preventDefault()
         // setAllProducts(productFilter(allProducts, keyword));
     }
-
+    const getProduct = (e: string) => {
+        getProductsByCate(e).then( (data) =>{
+            setAllProducts(data);
+        }
+        );
+        // setAllProducts(productFilter(allProducts, keyword));
+    }
     return (
         <div className='main my-6'>
             <h3 className='font-normal'>Quản lý sản phẩm</h3>
@@ -59,7 +65,7 @@ const Products = () => {
                             <ul>
                                 {
                                     categories.map(cate =>
-                                        <li key={cate.id}>{cate.title}</li>
+                                        <li key={cate.id} onClick={() => getProduct(cate.id)}>{cate.title}</li>
                                     )
                                 }
                             </ul>

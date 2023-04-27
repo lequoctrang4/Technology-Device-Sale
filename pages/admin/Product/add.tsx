@@ -144,7 +144,7 @@ const Add = () => {
                             />
                         </div>
                         <div>
-                            <label>Giảm</label>
+                            <label>Tỉ lệ giảm giá (%)</label>
                             <input
                                 type="number"
                                 className="border border-gray-300 rounded-lg p-4"
