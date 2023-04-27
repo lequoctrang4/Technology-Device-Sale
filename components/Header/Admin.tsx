@@ -23,6 +23,8 @@ const HeaderAdmin = () => {
                     src={logo}
                     alt="logo"
                     width={100}
+                    onClick={() => push('/')}
+                    className='hover:cursor-pointer'
                 />
                 <div className='flex flex-row gap-6'>
                     <button className='flex items-center justify-center bg-red-500 rounded-lg px-2'>

@@ -48,7 +48,7 @@ const SignIn = ({ callback }: { callback: Function }) => {
         }
 
         const resp = await signIn(formValue);
-        if (resp.status === 400) {
+        if (resp.msg === 'password not correct') {
             titleNotify = "Đăng nhập thất bại."
             messageNotify = "Tài khoản hoặc mật khẩu không đúng.";
             setNotification('danger', titleNotify, messageNotify);
