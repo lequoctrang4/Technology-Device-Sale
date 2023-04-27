@@ -1,9 +1,12 @@
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './style.module.scss';
 import { getCookie } from 'typescript-cookie';
 import { useRouter } from 'next/router';
+import { editProduct } from '@/pages/api/productApi';
+import { getProductsById } from '@/pages/api/productApi';
+import { defaultProduct } from '@/model/eProduct';
 
 const Modify = () => {
     const bread = [
@@ -14,6 +17,7 @@ const Modify = () => {
     const { id } = router.query
     const [rows, setRows] = useState([{}]);
     const [formValue, setFormValue] = useState({
+        id: '',
         name: '',
         color: '',
         salePercent: '',
@@ -22,9 +26,26 @@ const Modify = () => {
         category: '',
         html: '',
         image: '',
+        attr: {},
     });
+    useEffect(() => {
+        console.log(id);
+        getProductsById(id).then(data => {
+            setFormValue({
+                ...formValue,
+                id: data[0].id,
+                name: data[0].name,
+                color: data[0].color,
+                salePercent: data[0].salePercent,
+                price: data[0].price,
+                manufacturer: data[0].manufacturer,
+                html: data[0].html,
+                image: data[0].image,
+            })
+        });
+    }, [id]);
 
-    console.log(router.query);
+    // console.log(product);
 
     const handleAddRow = () => {
         const item = {
@@ -56,8 +77,11 @@ const Modify = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const token = getCookie('user');
-        console.log(token);
-        
+        editProduct(token, formValue)
+            .then(data => {
+                console.log(data);
+            }) 
+        // console.log(token);
     };
 
     return (
@@ -93,6 +117,7 @@ const Modify = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="name"
                                 onChange={handleChangeForm}
+                                value={formValue.name}
                             />
                         </div>
                         <div>
@@ -115,6 +140,7 @@ const Modify = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="manufacturer"
                                 onChange={handleChangeForm}
+                                value={formValue.manufacturer}
                             />
                         </div>
                         <div>
@@ -124,6 +150,7 @@ const Modify = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="color"
                                 onChange={handleChangeForm}
+                                value={formValue.color}
                             />
                         </div>
                         <div>
@@ -133,6 +160,7 @@ const Modify = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="price"
                                 onChange={handleChangeForm}
+                                value={formValue.price}
                             />
                         </div>
                         <div>
@@ -142,6 +170,7 @@ const Modify = () => {
                                 className="border border-gray-300 rounded-lg p-4"
                                 name="salePercent"
                                 onChange={handleChangeForm}
+                                value={formValue.salePercent}
                             />
                         </div>
                     </div>
@@ -220,7 +249,7 @@ const Modify = () => {
                 </div>
                 <div>
                     <label>Mô tả</label>
-                    <textarea />
+                    <textarea value={formValue.html} name='html' onChange={(e) => handleChangeForm(e)}/>
                 </div>
                 <div className="flex justify-end gap-8">
                     <Link

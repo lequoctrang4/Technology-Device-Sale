@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Pagination from '@/components/Pagination';
 import eUser from '@/model/eUser';
 import axios from 'axios';
-
 import Style from './style.module.scss'
 import { useDirect, useGContext } from '@/components/GlobalContext';
 import WarningModal from '@/components/WarningModal';

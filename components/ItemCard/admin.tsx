@@ -1,9 +1,29 @@
 import eProduct from '@/model/eProduct'
+import { deleteProduct, getAllProduct } from '@/pages/api/productApi'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { PencilSquare } from 'react-bootstrap-icons'
+import { getCookie } from 'typescript-cookie'
 
-const AdminCard = ({ product }: { product: eProduct }) => {
+const AdminCard = ({ product, callback }: { product: eProduct , callback: Function}) => {
+    const router = useRouter();
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const token = getCookie('user');
+        console.log(token);
+        deleteProduct(token, product.id)
+            .then(data => {
+                if (data) {
+                    alert('Xóa thành công');
+                    getAllProduct().then(data => callback(data));
+                }
+                else alert('Xóa thất bại');
+                console.log(data);
+        })
+    }
+
     return (
         <div className='flex gap-2 p-3 border border-gray-300 my-2 rounded-sm'>
             <img alt='' src={product.image ?? ""} className='w-[90px]' />
@@ -17,7 +37,7 @@ const AdminCard = ({ product }: { product: eProduct }) => {
                     Chỉnh sửa
                     <PencilSquare className='inline ml-2'/>
                 </Link>
-                <button className='btn-danger-outline block w-full mt-3'>
+                <button onClick={(e) => handleSubmit(e)} className='btn-danger-outline block w-full mt-3'>
                     Xóa
                 </button>
             </div>

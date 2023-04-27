@@ -10,6 +10,7 @@ import { getAllCategory, getAllProduct } from '@/pages/api/productApi';
 import eProduct from '@/model/eProduct';
 import eCate from '@/model/eCate';
 import { useDirect } from '@/components/GlobalContext';
+import { Cookies, getCookie } from 'typescript-cookie';
 
 const Products = () => {
     const router = useRouter();
@@ -75,7 +76,7 @@ const Products = () => {
                         .filter(item => item.manufacturer.includes(brand))
                         .slice(amount * 5, (amount + 1) * 5)
                         .map((item, i: number) =>
-                            <AdminCard product={item} key={i} />
+                            <AdminCard product={item} key={i} callback={setAllProducts} />
                         )
                 }
             </div>

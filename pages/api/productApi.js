@@ -218,7 +218,7 @@ export const editProduct = async (token, formValue) => {
   try {
     // make axios post request
     const res = await axios({
-      method: "post",
+      method: "patch",
       url: `http://localhost/product`,
       data: formValue,
       headers: {
@@ -237,14 +237,14 @@ export const deleteProduct = async (token, id) => {
     const res = await axios({
       method: "delete",
       url: `http://localhost/product?id=${id}`,
-      data: formValue,
       headers: {
         Authorization: `Bearer ${token}`,
         "content-type": "application/text/plain",
       },
     });
+    console.log(res);
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return error.response;
   }
 };
