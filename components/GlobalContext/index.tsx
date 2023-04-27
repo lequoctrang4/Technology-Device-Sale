@@ -72,14 +72,14 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
         console.groupEnd()
     }
 
-    const productFilter = (arr?: eProduct[]) => {
-        if (!arr) arr = allProducts;
-        return arr.filter(p => p.name.toUpperCase().includes(kw.toUpperCase())) ||
-            arr.filter(p => p.name.toLowerCase().includes(kw.toLowerCase())) ||
-            arr.filter(p => p.manufacturer.toLowerCase().includes(kw.toLowerCase())) ||
-            arr.filter(p => p.manufacturer.toUpperCase().includes(kw.toUpperCase())) ||
-            arr.filter(p => p.id.toLowerCase().includes(kw.toLowerCase())) ||
-            arr.filter(p => p.id.toUpperCase().includes(kw.toUpperCase()))
+    const productFilter = (k: string) => {
+        let arr = allProducts;
+        return arr.filter(p => p.name.toUpperCase().includes(k.toUpperCase())) ||
+            arr.filter(p => p.name.toLowerCase().includes(k.toLowerCase())) ||
+            arr.filter(p => p.manufacturer.toLowerCase().includes(k.toLowerCase())) ||
+            arr.filter(p => p.manufacturer.toUpperCase().includes(k.toUpperCase())) ||
+            arr.filter(p => p.id.toLowerCase().includes(k.toLowerCase())) ||
+            arr.filter(p => p.id.toUpperCase().includes(k.toUpperCase()))
     }
 
     const val = {

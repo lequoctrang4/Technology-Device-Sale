@@ -29,13 +29,9 @@ const HeaderUser = () => {
         })
     }, []);
 
-    useEffect(() => {
-        push('/product?search='+kw)
-    }, [kw])
-
     const handleLookUp = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        setKw(keyword);
+        push('/product?search='+keyword)
     }
 
     return (

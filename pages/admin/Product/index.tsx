@@ -19,7 +19,6 @@ const Products = () => {
     const [categories, setCategories] = useState<eCate[]>([]);
     const [brand, setBrand] = useState("");
     const [keyword, setKeyword] = useState("");
-    const { setKw, kw, productFilter } = useGContext();
 
     useDirect();
     useEffect(() => {
@@ -37,7 +36,7 @@ const Products = () => {
             <h3 className='font-normal'>Quản lý sản phẩm</h3>
             <div className='grid grid-cols-6 gap-4 mt-4'>
                 <form onSubmit={handleSubmit} className={`col-start-1 col-span-4 ${style.form}`}>
-                    <input placeholder='Nhập mã sản phẩm hoặc từ khóa' onChange={(e) => setKeyword(e.target.value)} />
+                    <input placeholder='Nhập mã sản phẩm hoặc từ khóa' />
                     <button type='submit'> <Search /></button>
                 </form>
 

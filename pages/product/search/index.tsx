@@ -8,8 +8,9 @@ import React from 'react'
 
 const LookUp = () => {
     const route = useRouter();
+    const {search} = route.query;
     const { productFilter } = useGContext();
-    const result = productFilter();
+    const result = productFilter(search);
     const bread: eLink[] = [
         { name: 'Trang chủ', path: '/' },
         { name: 'Tìm kiếm' }
