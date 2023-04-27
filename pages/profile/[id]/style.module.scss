@@ -19,3 +19,21 @@
 
     }
 }
+
+.order_item {
+    margin-top: 0.5rem;
+
+    td, th {
+        text-align: left;
+        padding: 0 .5rem;
+    }
+}
+
+.order_detail {
+    border-collapse: collapse;
+
+    td, th {
+        border: 1px solid silver;
+        padding: 0 .5rem;
+    }
+}

@@ -62,7 +62,9 @@ const HeaderUser = () => {
                             <Cart3 size={16} />
                             Giỏ hàng
                             <div className={style['cart-quantity']}>
-                                {cart.quantity}
+                                {cart.detail.reduce((a: number, b) => {
+                                    return a + b.quantity;
+                                }, 0)}
                             </div>
                         </button>
                         <button>

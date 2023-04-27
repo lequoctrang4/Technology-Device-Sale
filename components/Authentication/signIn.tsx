@@ -6,7 +6,23 @@ import { NOTIFICATION_TYPE, Store } from 'react-notifications-component'
 import style from './style.module.scss'
 import { useGContext } from '../GlobalContext'
 import { getProfile, signIn } from '@/pages/api/userApi'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+
+export const setNotification = (notify: NOTIFICATION_TYPE, titleNotify: string, messageNotify: string) => {
+    Store.addNotification({
+        title: titleNotify,
+        message: messageNotify,
+        type: notify,
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+            duration: 1000,
+            onScreen: true
+        }
+    });
+};
 
 const SignIn = ({ callback }: { callback: Function }) => {
     const [formValue, setformValue] = useState({ mobile: '', password: '' });
@@ -15,22 +31,6 @@ const SignIn = ({ callback }: { callback: Function }) => {
     var notify = 'warning';
     var titleNotify = 'Thông tin tài khoản hoặc mật khẩu không đúng';
     var messageNotify = 'Vui lòng nhập lại'
-
-    const setNotification = (notify: NOTIFICATION_TYPE, titleNotify: string, messageNotify: string) => {
-        Store.addNotification({
-            title: titleNotify,
-            message: messageNotify,
-            type: notify,
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-                duration: 1000,
-                onScreen: true
-            }
-        });
-    };
 
     const handleChange = (event: any) => {
         setformValue({

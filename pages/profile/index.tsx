@@ -10,7 +10,7 @@ const Profile = () => {
     useEffect(() => {
         console.log(id);
         if (!id)
-            route.push('/profile/1')
+            route.push('/profile/'+user.id)
     }, [id])
 
     return (

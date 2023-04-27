@@ -3,17 +3,27 @@ import { Trash } from "react-bootstrap-icons";
 import { useGContext } from "@/components/GlobalContext";
 import Item from "./item";
 import { useMemo, useState } from "react";
-import eProduct from "@/model/eProduct";
 import { formatPrice } from "@/utils/price";
+import { useRouter } from "next/router";
+import InfoModal from "@/components/Modal/Info";
+import { setNotification } from "@/components/Authentication/signIn";
 
 export default function Cart() {
-    const { cart } = useGContext();
+    const { cart, user } = useGContext();
+    const { push } = useRouter();
     const [payment, setPayment] = useState(0);
+    const [modal, setModal] = useState(false);
     const calculate = useMemo(() => {
         return cart.detail.reduce((a: number, b) => {
             return parseInt(b.product.price) * b.quantity + a;
         }, 0)
     }, [cart]);
+
+    const toPayment = () => {
+        if (user.id)
+            push('/payment');
+        else setNotification('warning', 'Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này!')
+    }
 
     return (
         <div className="main">
@@ -63,9 +73,9 @@ export default function Cart() {
                                 <p>Tổng thanh toán</p>
                                 <p className="text-red-500 font-bold">{formatPrice(calculate)}đ</p>
                             </div>
-                            <Link className="btn-danger text-center" href={'/payment'}>
+                            <button className="btn-danger text-center" onClick={toPayment}>
                                 Thanh toán
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 </div>
