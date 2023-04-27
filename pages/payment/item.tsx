@@ -2,16 +2,14 @@ import { useGContext } from '@/components/GlobalContext'
 import { formatPrice } from '@/utils/price'
 
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { DashCircle, PlusCircle, Trash } from 'react-bootstrap-icons'
 
 interface props {
-    index: number,
-    setPayment: any,
-    payment: number
+    index: number
 }
 
-const Item = ({ index, setPayment, payment }: props) => {
+const Item = ({ index}: props) => {
     const { cart, setCart } = useGContext();
     const product = cart.detail[index].product;
     // const [warning, setWarning] = useState(false)
@@ -62,7 +60,7 @@ const Item = ({ index, setPayment, payment }: props) => {
     }
 
     return (
-        <>
+        <div>
             <div className="flex flex-row p-2 lg:p-4 bg-white border border-gray-200 rounded-lg">
                 <div className="w-1/2 flex flex-row text-sm font-medium text-gray-900">
                     <div className="flex flex-row items-center">
@@ -85,30 +83,30 @@ const Item = ({ index, setPayment, payment }: props) => {
                     </div>
                     <div className="w-1/3 px-1 font-medium text-center text-gray-900 dark:text-gray-300">
                         <div className="my-3 flex gap-1 items-center justify-center">
-                            <button onClick={() => changeNumber(1, 'sub')}>
-                                <DashCircle size={24} className="text-indigo-400" />
-                            </button>
+                            {/* <button onClick={() => changeNumber(1, 'sub')} disabled>
+                                <DashCircle size={12} className="text-indigo-400" />
+                            </button> */}
                             <input
                                 type="number"
                                 className="text-center border border-gray-100 rounded p-1 w-[32px] md:w-[40px] lg:w-[48px]"
                                 value={cart.detail[index].quantity}
-                                onChange={(e) => changeNumber(parseInt(e.target.value))}
-
+                                readOnly
+                                disabled
                             />
-                            <button onClick={() => changeNumber(1, 'add')}>
-                                <PlusCircle size={24} className="text-indigo-400" />
-                            </button>
+                            {/* <button onClick={() => changeNumber(1, 'add')} disabled>
+                                <PlusCircle size={12} className="text-indigo-400" />
+                            </button> */}
                         </div>
                     </div>
                     <div className="w-1/3 px-1 font-medium text-center">
                         {formatPrice(parseInt(product.price) * cart.detail[index].quantity)}
                     </div>
-                    <button onClick={handleRemove}>
+                    {/* <button onClick={handleRemove}>
                         <Trash size={20} />
-                    </button>
+                    </button> */}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
