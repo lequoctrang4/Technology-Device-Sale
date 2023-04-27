@@ -13,13 +13,20 @@ const HomePage = () => {
 			.then(data => setImages(data))
 	}, [])
 
+	const listImg = [
+		'https://cdn2.cellphones.com.vn/1800x600,webp,q100/https://dashboard.cellphones.com.vn/storage/a34-sliding-new-th4.png',
+		'https://cdn2.cellphones.com.vn/1800x600,webp,q100/https://dashboard.cellphones.com.vn/storage/note-12-mo-ban-003-sliding-new-004444.png',
+		'https://cdn2.cellphones.com.vn/1800x600,webp,q100/https://dashboard.cellphones.com.vn/storage/iphone-14-pro-sliding-new-trogia2tr.jpg',
+		'https://cdn2.cellphones.com.vn/1800x600,webp,q100/https://dashboard.cellphones.com.vn/storage/oppo-sliding-new-moban.png'
+	]
+
 	return (
 		<div>
 			<div className='w-full h-[400px] bg-gray-200 overflow-hidden'>
 				<Carousel>
 					{
-						images.map((img: any) =>
-							<img src={img.download_url} alt={img.id} key={img.id}/>
+						listImg.map((img: string, index: number) =>
+							<img src={img} alt='' key={index}/>
 						)
 					}
 				</Carousel>

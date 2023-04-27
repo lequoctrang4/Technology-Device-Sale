@@ -32,13 +32,14 @@ const Detail = () => {
                                 id="grid-first-name"
                                 type="text"
                                 readOnly
+                                value={"Phan Hải"}
                             />
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                                 Tên
                             </label>
-                            <input readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-last-name" type="text" />
+                            <input value={"Hà"} readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-last-name" type="text" />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -46,13 +47,13 @@ const Detail = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                                 Tên người dùng
                             </label>
-                            <input className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-username" type="text" readOnly />
+                            <input value={"phanhaiha14"} className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-username" type="text" readOnly />
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                                 Mã số CCCD
                             </label>
-                            <input className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-cccd" type="number" readOnly />
+                            <input value={"000200031111"} className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-cccd" type="number" readOnly />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -60,13 +61,13 @@ const Detail = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-tel">
                                 Số điện thoại
                             </label>
-                            <input readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-tel" type="number" />
+                            <input value={"0339330709"} readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-tel" type="number" />
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                                 Email
                             </label>
-                            <input readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-email" type="email" />
+                            <input value={"haha@gmail.com"} readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-email" type="email" />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -74,20 +75,19 @@ const Detail = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-birthday">
                                 Ngày sinh
                             </label>
-                            <input readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-birthday" type="date" />
+                            <input value={"2000-03-10"} readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-birthday" type="date" />
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                                 Giới tính
                             </label>
-                            {/* <div className="relative">
-                                <select className="block appearance w-full bg-white-200 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-gender">
-                                    <option value="Nam">Nam</option>
+                            <div className="relative">
+                                <select aria-readonly className="block appearance w-full bg-white-200 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-300" id="grid-gender">
+                                    <option defaultChecked value="Nam">Nam</option>
                                     <option value="Nữ">Nữ</option>
                                     <option value="Khác">Khác</option>
                                 </select>
-                            </div > */}
-                            <input readOnly className="appearance-none block w-full bg-white-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-gender" type="text" value="Nữ"/>
+                            </div >
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
