@@ -7,7 +7,7 @@ import { getCookie } from 'typescript-cookie';
 
 const Add = () => {
     const bread = [
-        { name: 'Quản lý sản phẩm', path: '/admin/product' },
+        { name: 'Quản lý sản phẩm', path: '/admin/Product' },
         { name: 'Thêm sản phẩm mới' },
     ];
     const [rows, setRows] = useState([{}]);
@@ -246,7 +246,7 @@ const Add = () => {
                 </div>
                 <div className="flex justify-end gap-8">
                     <Link
-                        href={'/admin/product'}
+                        href={'/admin/Product'}
                         className="btn-danger hover:underline"
                     >
                         Hủy thay đổi

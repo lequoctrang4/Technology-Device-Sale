@@ -12,8 +12,11 @@ interface menuContext {
     cart: eCart,
     setCart: Dispatch<SetStateAction<eCart>>,
     addItemToCart: Function,
+    productFilter: Function,
     categories: eCate[],
-    setCategories: Dispatch<SetStateAction<eCate[]>>
+    setCategories: Dispatch<SetStateAction<eCate[]>>,
+    kw: string,
+    setKw: Dispatch<SetStateAction<string>>
 }
 
 export default menuContext;

@@ -2,7 +2,7 @@ import React from "react";
 
 const WarningModal = (props : any) => {
     const {children}: any = props;
-    console.log(children)
+    // console.log(children)
     return (
         <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             {/* <!--

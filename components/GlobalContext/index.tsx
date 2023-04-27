@@ -20,7 +20,10 @@ const GlobalCtx = createContext<menuContext>({
     setCart: () => { },
     addItemToCart: (product: eProduct) => { },
     categories: [],
-    setCategories: () => { }
+    setCategories: () => { },
+    kw: '',
+    setKw: () => { },
+    productFilter: Function
 });
 
 const useGContext = () => useContext(GlobalCtx);
@@ -37,12 +40,13 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState(defaultUser);
     const [allProducts, setAllProducts] = useState<Array<eProduct>>([]);
     const [cart, setCart] = useState(defaultCart);
+    const [kw, setKw] = useState("");
     const [categories, setCategories] = useState<eCate[]>([]);
 
     const addItemToCart = (product: eProduct) => {
         const newCart = { ...cart };
         console.group('Begin: ');
-        console.log(cart);
+        // console.log(cart);
         if (newCart.detail.length === 0) {
             newCart.detail.push({
                 quantity: 1,
@@ -64,8 +68,18 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
             newCart.quantity = newCart.detail.reduce((total, _) => total + _.quantity, 0)
         }
         setCart(newCart)
-        console.log(cart);
+        // console.log(cart);
         console.groupEnd()
+    }
+
+    const productFilter = (arr?: eProduct[]) => {
+        if (!arr) arr = allProducts;
+        return arr.filter(p => p.name.toUpperCase().includes(kw.toUpperCase())) ||
+            arr.filter(p => p.name.toLowerCase().includes(kw.toLowerCase())) ||
+            arr.filter(p => p.manufacturer.toLowerCase().includes(kw.toLowerCase())) ||
+            arr.filter(p => p.manufacturer.toUpperCase().includes(kw.toUpperCase())) ||
+            arr.filter(p => p.id.toLowerCase().includes(kw.toLowerCase())) ||
+            arr.filter(p => p.id.toUpperCase().includes(kw.toUpperCase()))
     }
 
     const val = {
@@ -77,7 +91,10 @@ const GlobalContext = ({ children }: { children: JSX.Element }) => {
         setCart,
         addItemToCart,
         categories,
-        setCategories
+        setCategories,
+        kw,
+        setKw,
+        productFilter
     }
     return (
         <GlobalCtx.Provider value={val}>

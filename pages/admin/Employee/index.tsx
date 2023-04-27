@@ -21,7 +21,7 @@ function CustomerList() {
                 <div className='col-span-1 flex justify-end'>
                     <button
                         className='bg-primary p-2 text-white rounded '
-                        onClick={() => router.push('/admin/employee/add')}
+                        onClick={() => router.push('/admin/Employee/add')}
                     >
                         Thêm nhân viên
                     </button>
@@ -49,7 +49,7 @@ function CustomerList() {
                             <td className="border px-6 py-3 flex justify-around gap-4">
                                 <button
                                     className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex-4"
-                                    onClick={() => router.push(`/admin/employee/phanhaiha14`)}
+                                    onClick={() => router.push(`/admin/Employee/phanhaiha14`)}
                                 >
                                     Thông tin
                                 </button>

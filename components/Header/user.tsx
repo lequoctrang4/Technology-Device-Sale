@@ -16,7 +16,7 @@ import eUser from '@/model/eUser';
 
 const HeaderUser = () => {
     const { push } = useRouter();
-    const { cart, user, setUser } = useGContext();
+    const { cart, user, setUser, setKw, kw } = useGContext();
     const [keyword, setKeyword] = useState("");
     const [loginModal, setLoginModal] = useState<boolean>(false);
 
@@ -29,9 +29,13 @@ const HeaderUser = () => {
         })
     }, []);
 
+    useEffect(() => {
+        push('/product?search='+kw)
+    }, [kw])
+
     const handleLookUp = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        console.log(keyword)
+        setKw(keyword);
     }
 
     return (

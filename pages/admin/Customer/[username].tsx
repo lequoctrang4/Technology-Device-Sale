@@ -91,12 +91,12 @@ const Detail = () => {
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
-                        <Link href='/admin/customer/phanhaiha14/address_list'>
+                        <Link href='/admin/Customer/phanhaiha14/address_list'>
                             <span className="mb-2 px-3 underline text-blue-500">Danh sách địa chỉ</span >
                         </Link>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-4">
-                        <Link href='/admin/customer/phanhaiha14/order_history'>
+                        <Link href='/admin/Customer/phanhaiha14/order_history'>
                             <span className="mb-2 px-3 underline text-blue-500">Danh sách đơn hàng</span >
                         </Link>
                     </div>

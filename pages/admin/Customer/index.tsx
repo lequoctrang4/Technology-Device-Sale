@@ -8,23 +8,29 @@ import axios from 'axios';
 import Style from './style.module.scss'
 import { useDirect, useGContext } from '@/components/GlobalContext';
 import WarningModal from '@/components/WarningModal';
+import { getCookie } from 'typescript-cookie';
 
 function CustomerList() {
     const [amount, setAmount] = useState(0);
     const [showModal, setShowModal] = useState(false);
-    // const [users, setUsers] = useState<eUser[]>([])
+    const [users, setUsers] = useState<eUser[]>([])
 
     // const [activeListpage, setActiveListpage] = useState(true);
 
     useDirect();
     const router = useRouter();
-
     const username = router.query.username;
 
     useEffect(() => {
-        axios.get('http://localhost/users')
-            .then(resp => console.log(resp))
-            .catch(err => console.log(err))
+        const token = getCookie('user');
+        axios.get('http://localhost/users', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "content-type": "application/text/plain",
+            },
+        }).then(resp => setUsers(resp.data.filter((_: any) => _.isAdmin === '0')))
+            .catch(error => console.error(error));
+
     }, [])
 
     return (
@@ -36,9 +42,8 @@ function CustomerList() {
                 </form>
                 <div className='grow'>
                     <table className="w-full text-sm text-left">
-                        <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                        <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
                             <tr>
-                                <th scope="col" className="border px-6 py-3">Username</th>
                                 <th scope="col" className="border px-6 py-3">Họ và tên</th>
                                 <th scope="col" className="border px-6 py-3">Số điện thoại</th>
                                 <th scope="col" className="border px-6 py-3">Email</th>
@@ -46,7 +51,34 @@ function CustomerList() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {
+                                users.map(u => <tr key={u.id}>
+                                    <td className="border px-6 py-3">{u.name}</td>
+                                    <td className="border px-6 py-3">{u.mobile}</td>
+                                    <td className="border px-6 py-3">{u.email}</td>
+                                    <td className="border px-6 py-3 flex justify-around gap-4">
+                                        <button
+                                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-4"
+                                            onClick={() => router.push(`/admin/Customer/${u.id}/order_history`)}
+                                        >
+                                            Đơn hàng
+                                        </button>
+                                        <button
+                                            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex-4"
+                                            onClick={() => router.push(`/admin/Customer/${u.id}`)}
+                                        >
+                                            Thông tin
+                                        </button>
+                                        <button
+                                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex-4"
+                                            onClick={() => setShowModal(true)}
+                                        >
+                                            Xóa
+                                        </button>
+                                    </td>
+                                </tr>)
+                            }
+                            {/* <tr>
                                 <td className="border px-6 py-3">phanhaiha14</td>
                                 <td className="border px-6 py-3">Phan Hải Hà</td>
                                 <td className="border px-6 py-3">0339337907</td>
@@ -71,7 +103,7 @@ function CustomerList() {
                                         Xóa
                                     </button>
                                 </td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                     {showModal && <WarningModal setShowModal={setShowModal}>

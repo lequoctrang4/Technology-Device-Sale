@@ -11,8 +11,8 @@ const OrderHistory = () => {
     const states = ['Đã xác nhận', 'Đang giao', 'Đã giao'];
 
     const bread = [
-        { name: 'Quản lý khách hàng', path: '/admin/customer' },
-        { name: `Thông tin khách hàng phanhaiha14`, path: `/admin/customer/phanhaiha14` },
+        { name: 'Quản lý khách hàng', path: '/admin/Customer' },
+        { name: `Thông tin khách hàng phanhaiha14`, path: `/admin/Customer/phanhaiha14` },
         { name: `Danh sách đơn hàng` }
     ];
 

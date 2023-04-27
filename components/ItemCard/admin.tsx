@@ -13,7 +13,7 @@ const AdminCard = ({ product }: { product: eProduct }) => {
                 <p>{product.price}</p>
             </div>
             <div>
-                <Link href={'/admin/product/' + product.id} className='btn-info-outline py-2 hover:underline'>
+                <Link href={'/admin/Product/' + product.id} className='btn-info-outline py-2 hover:underline'>
                     Chỉnh sửa
                     <PencilSquare className='inline ml-2'/>
                 </Link>

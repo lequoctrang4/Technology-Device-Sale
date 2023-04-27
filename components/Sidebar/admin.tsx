@@ -12,25 +12,25 @@ const AdminSidebar = () => {
             name: 'Quản lý sản phẩm',
             icon: <Telephone size={20} />,
             status: false,
-            url: 'product'
+            url: 'Product'
         },
         {
             name: 'Quản lý đơn hàng',
             icon: <ListTask size={20} />,
             status: false,
-            url: 'order'
+            url: 'Order'
         },
         {
             name: 'Quản lý khách hàng',
             icon: <Person size={20} />,
             status: false,
-            url: 'customer'
+            url: 'Customer'
         },
         {
             name: 'Quản lý nhân viên',
             icon: <People size={20} />,
             status: false,
-            url: 'employee'
+            url: 'Employee'
         }
     ]
     return (

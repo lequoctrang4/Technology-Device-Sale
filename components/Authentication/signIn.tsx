@@ -63,7 +63,7 @@ const SignIn = ({ callback }: { callback: Function }) => {
             callback(false);
             getProfile(token).then(data => {
                 setUser(data[0]);
-                if (data[0].isAdmin === '1') push('/admin/product')
+                if (data[0].isAdmin === '1') push('/admin/Product')
             })
         }
     }

@@ -8,7 +8,6 @@ const Profile = () => {
     const id = false
 
     useEffect(() => {
-        console.log(id);
         if (!id)
             route.push('/profile/'+user.id)
     }, [id])

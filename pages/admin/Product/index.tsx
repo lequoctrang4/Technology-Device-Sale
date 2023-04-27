@@ -9,7 +9,7 @@ import AdminCard from '@/components/ItemCard/admin';
 import { getAllCategory, getAllProduct } from '@/pages/api/productApi';
 import eProduct from '@/model/eProduct';
 import eCate from '@/model/eCate';
-import { useDirect } from '@/components/GlobalContext';
+import { useDirect, useGContext } from '@/components/GlobalContext';
 
 const Products = () => {
     const router = useRouter();
@@ -17,6 +17,8 @@ const Products = () => {
     const [allProducts, setAllProducts] = useState<eProduct[]>([]);
     const [categories, setCategories] = useState<eCate[]>([]);
     const [brand, setBrand] = useState("");
+    const [keyword, setKeyword] = useState("");
+    const { setKw, kw, productFilter } = useGContext();
 
     useDirect();
     useEffect(() => {
@@ -24,12 +26,17 @@ const Products = () => {
         getAllCategory().then(data => setCategories(data));
     }, [])
 
+    const handleSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault()
+        // setAllProducts(productFilter(allProducts, keyword));
+    }
+
     return (
         <div className='main my-6'>
             <h3 className='font-normal'>Quản lý sản phẩm</h3>
             <div className='grid grid-cols-6 gap-4 mt-4'>
-                <form className={`col-start-1 col-span-4 ${style.form}`}>
-                    <input placeholder='Nhập mã sản phẩm hoặc từ khóa' />
+                <form onSubmit={handleSubmit} className={`col-start-1 col-span-4 ${style.form}`}>
+                    <input placeholder='Nhập mã sản phẩm hoặc từ khóa' onChange={(e) => setKeyword(e.target.value)} />
                     <button type='submit'> <Search /></button>
                 </form>
 
@@ -61,7 +68,7 @@ const Products = () => {
                 </div>
 
                 <Link
-                    href={'/admin/product/add'}
+                    href={'/admin/Product/add'}
                     className='bg-primary p-2 text-white rounded col-span-1'
                 >
                     Thêm sản phẩm
